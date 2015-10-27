@@ -584,6 +584,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         testAppPatternTextField.setText(null);
+		testAppPatternTextField.requestFocus();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
