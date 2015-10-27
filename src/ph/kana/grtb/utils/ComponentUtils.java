@@ -2,9 +2,14 @@ package ph.kana.grtb.utils;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.event.KeyEvent;
 import java.io.File;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.DefaultCaret;
 
@@ -60,6 +65,15 @@ public final class ComponentUtils {
 			return fileChooser.getSelectedFile();
 		} else {
 			return null;
+		}
+	}
+	
+	public static void setupOkAndCancelButtonsForDialog(JDialog dialog, JButton okButton, JButton cancelButton) {
+		if (null != okButton) {
+			dialog.getRootPane().setDefaultButton(okButton);
+		}
+		if (null != cancelButton) {
+			dialog.getRootPane().registerKeyboardAction(cancelButton.getActionListeners()[0], KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 		}
 	}
 }
