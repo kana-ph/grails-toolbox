@@ -3,7 +3,7 @@ package ph.kana.grtb.process;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import ph.kana.grtb.utils.IOUtils;
+import ph.kana.grtb.utils.IoUtils;
 
 public abstract class GrailsProcess {
 	
@@ -27,12 +27,12 @@ public abstract class GrailsProcess {
 	
 	public final void execute() throws IOException, InterruptedException {
 		String command = getCommandString();
-		IOUtils.logRunning(this);
+		IoUtils.logRunning(this);
 		osProcess = Runtime.getRuntime().exec(command, null, getGrailsProjectDirectrory());
 	}
 	
 	public void stop() throws IOException {
-		IOUtils.logKill(this);
+		IoUtils.logKill(this);
 		osProcess.destroy();
 	}
 

@@ -14,7 +14,7 @@ import ph.kana.grtb.process.RunAppGrailsProcess;
 import ph.kana.grtb.process.TestAppGrailsProcess;
 import ph.kana.grtb.process.VersionGrailsProcess;
 import ph.kana.grtb.utils.ComponentUtils;
-import ph.kana.grtb.utils.IOUtils;
+import ph.kana.grtb.utils.IoUtils;
 
 public class GrailsToolboxFrame extends javax.swing.JFrame {
 	
@@ -81,6 +81,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         runAppButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Running Rabbit-32.png"))); // NOI18N
         runAppButton.setText("Run App");
+        runAppButton.setFocusable(false);
         runAppButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         runAppButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         runAppButton.addActionListener(new java.awt.event.ActionListener() {
@@ -91,8 +92,10 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         runAppEnviroComboBox.setEditable(true);
         runAppEnviroComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "dev", "prod", "test" }));
+        runAppEnviroComboBox.setFocusable(false);
 
         useConsoleCheckbox.setText("Use Console");
+        useConsoleCheckbox.setFocusable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -116,6 +119,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         testAppButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Test Tube-32.png"))); // NOI18N
         testAppButton.setText("Test App");
+        testAppButton.setFocusable(false);
         testAppButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         testAppButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         testAppButton.addActionListener(new java.awt.event.ActionListener() {
@@ -126,14 +130,17 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         testAppUnitCheckBox.setSelected(true);
         testAppUnitCheckBox.setText("Unit Test");
+        testAppUnitCheckBox.setFocusable(false);
 
         testAppIntegCheckBox.setText("Integration Test");
+        testAppIntegCheckBox.setFocusable(false);
 
         jLabel1.setText("Classnames Pattern");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jButton1.setText("x");
         jButton1.setToolTipText("");
+        jButton1.setFocusable(false);
         jButton1.setIconTextGap(0);
         jButton1.setMargin(new java.awt.Insets(1, 1, 1, 1));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -176,6 +183,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         compileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Robot-25.png"))); // NOI18N
         compileButton.setText("Compile");
+        compileButton.setFocusable(false);
         compileButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         compileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +193,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         cleanAllButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Mushroom Cloud-25.png"))); // NOI18N
         cleanAllButton.setText("Clean All");
+        cleanAllButton.setFocusable(false);
         cleanAllButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         cleanAllButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,6 +203,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         cleanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Broom-25.png"))); // NOI18N
         cleanButton.setText("Clean");
+        cleanButton.setFocusable(false);
         cleanButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         cleanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,6 +235,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         killProcessButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Horror-25.png"))); // NOI18N
         killProcessButton.setText("Kill Process");
         killProcessButton.setEnabled(false);
+        killProcessButton.setFocusable(false);
         killProcessButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         killProcessButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -390,7 +401,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 	private void executeGrailsProcess(GrailsProcess grailsProcess) throws InterruptedException, IOException {
 		currentProcess = grailsProcess;
 		currentProcess.execute();
-		IOUtils.reflectStreamToTextArea(currentProcess.getInputStream(), consoleTextArea);
+		IoUtils.reflectStreamToTextArea(currentProcess.getInputStream(), consoleTextArea);
 	}
 	
 	private void executeGrailsProcessAsBackground(final GrailsProcess grailsProcess) {
@@ -416,7 +427,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 			@Override
 			public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
 				if ("DONE".equals(propertyChangeEvent.getNewValue().toString())) {
-					IOUtils.logExit(currentProcess);
+					IoUtils.logExit(currentProcess);
 					
 					enableComponents(true);
 					progressBar.setString("");
@@ -433,7 +444,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 			if (newDirectory != null) {
 				grailsProjectDirectory = newDirectory;
 				setTitle(String.format("Grails Toolbox: [%s]", grailsProjectDirectory.getAbsolutePath()));
-				IOUtils.logProjectChange(newDirectory);
+				IoUtils.logProjectChange(newDirectory);
 			} else {
 				dispose();
 			}
@@ -447,9 +458,9 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 			File newDirectory = ComponentUtils.selectReadDirectoryViaFileChooser(this);
 			if (newDirectory != null) {
 				grailsProjectDirectory = newDirectory;
-				IOUtils.saveCurrentProject(newDirectory);
+				IoUtils.saveCurrentProject(newDirectory);
 				setTitle(String.format("Grails Toolbox: [%s]", grailsProjectDirectory.getAbsolutePath()));
-				IOUtils.logProjectChange(newDirectory);
+				IoUtils.logProjectChange(newDirectory);
 			}
 		} catch (IOException e) {
 			handleException(e);
@@ -457,11 +468,11 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 	}
 	
 	private File fetchGrailsDirectory() throws IOException {
-		File directory = IOUtils.fetchPreviousProject();
+		File directory = IoUtils.fetchPreviousProject();
 
 		if (directory == null) {
 			directory = ComponentUtils.selectReadDirectoryViaFileChooser(this);
-			IOUtils.saveCurrentProject(directory);
+			IoUtils.saveCurrentProject(directory);
 		}
 		return directory;
 	}
@@ -554,7 +565,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 		File target = ComponentUtils.selectSaveTextFileViaFileChooser(this);
 		if (target != null) {
 			try {
-				IOUtils.printToFile(consoleTextArea.getText(), target);
+				IoUtils.printToFile(consoleTextArea.getText(), target);
 			} catch (IOException ex) {
 				handleException(ex);
 			}
