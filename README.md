@@ -9,4 +9,4 @@ Without typing grails commands!
 * Built in jdk 8 with `--source=1.7`
 * Uses `javax.swing`
 * Requires grails installation
-* Creates a `.grtb-prev` file for caching
+* Creates a `.grtb-cache` file for caching
