@@ -4,12 +4,14 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import ph.kana.grtb.utils.ComponentUtils;
 
 public class AboutDialog extends javax.swing.JDialog {
 
 	public AboutDialog(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
 		initComponents();
+		setupOkButton();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -26,7 +28,7 @@ public class AboutDialog extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        versionLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("About Grails Toolbox");
@@ -84,7 +86,7 @@ public class AboutDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel10.setText("v. 1.1c");
+        versionLabel.setText("v. 1.2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,7 +96,7 @@ public class AboutDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel10))
+                    .addComponent(versionLabel))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
@@ -142,7 +144,7 @@ public class AboutDialog extends javax.swing.JDialog {
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
+                            .addComponent(versionLabel)
                             .addComponent(jButton1))))
                 .addContainerGap())
         );
@@ -163,6 +165,11 @@ public class AboutDialog extends javax.swing.JDialog {
             System.err.println("Desktop browser not supported.");
         }
 	}
+	
+	private void setupOkButton() {
+		ComponentUtils.setupOkAndCancelButtonsForDialog(this, jButton1, jButton1);
+	}
+	
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -186,7 +193,6 @@ public class AboutDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -195,5 +201,6 @@ public class AboutDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel versionLabel;
     // End of variables declaration//GEN-END:variables
 }

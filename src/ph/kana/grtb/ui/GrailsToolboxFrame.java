@@ -547,7 +547,6 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 	}
 	
 	private boolean grailsIsInstalled() throws Exception {
-		if (1==1) { return true; }
 		try {
 			executeGrailsProcess(new VersionGrailsProcess());
 			return true;
@@ -670,10 +669,10 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
     private void customCommandMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customCommandMenuItemActionPerformed
         String command = CustomGrailsCommandDialog.fetchCommand(this);
-		CustomGrailsProcess customGrailsProcess = new CustomGrailsProcess();
-		customGrailsProcess.setCommand(command);
+		CustomGrailsProcess customCommand = new CustomGrailsProcess();
+		customCommand.setCommand(command);
 		
-		executeGrailsProcessAsBackground(customGrailsProcess);
+		executeGrailsProcessAsBackground(customCommand);
     }//GEN-LAST:event_customCommandMenuItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
