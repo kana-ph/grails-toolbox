@@ -9,6 +9,7 @@ import javax.swing.SwingWorker;
 import ph.kana.grtb.process.CleanGrailsProcess;
 import ph.kana.grtb.process.CompileGrailsProcess;
 import ph.kana.grtb.process.ConsoleGrailsProcess;
+import ph.kana.grtb.process.CustomGrailsProcess;
 import ph.kana.grtb.process.GrailsProcess;
 import ph.kana.grtb.process.RunAppGrailsProcess;
 import ph.kana.grtb.process.TestAppGrailsProcess;
@@ -27,6 +28,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem4 = new javax.swing.JMenuItem();
         toolboxPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         runAppButton = new javax.swing.JButton();
@@ -54,12 +56,22 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        grailsMenu = new javax.swing.JMenu();
+        runAppMenuItem = new javax.swing.JMenuItem();
+        testAppMenuItem = new javax.swing.JMenuItem();
+        cleanMenuItem = new javax.swing.JMenuItem();
+        cleanAllMenuItem = new javax.swing.JMenuItem();
+        compileMenuItem = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        customCommandMenuItem = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         useStacktraceCheckbox = new javax.swing.JCheckBoxMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenu5 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+
+        jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Grails Toolbox");
@@ -301,7 +313,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         menuBar.add(jMenu1);
 
-        jMenu4.setMnemonic('C');
+        jMenu4.setMnemonic('l');
         jMenu4.setText("Console");
         jMenu4.setToolTipText("");
 
@@ -327,20 +339,76 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         menuBar.add(jMenu4);
 
-        jMenu3.setMnemonic('G');
-        jMenu3.setText("Grails");
-        jMenu3.setToolTipText("");
+        grailsMenu.setMnemonic('G');
+        grailsMenu.setText("Grails");
+        grailsMenu.setToolTipText("");
+
+        runAppMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
+        runAppMenuItem.setText("Run App");
+        runAppMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runAppButtonActionPerformed(evt);
+            }
+        });
+        grailsMenu.add(runAppMenuItem);
+
+        testAppMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
+        testAppMenuItem.setText("Test App");
+        testAppMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testAppButtonActionPerformed(evt);
+            }
+        });
+        grailsMenu.add(testAppMenuItem);
+
+        cleanMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        cleanMenuItem.setText("Clean");
+        cleanMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cleanButtonActionPerformed(evt);
+            }
+        });
+        grailsMenu.add(cleanMenuItem);
+
+        cleanAllMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        cleanAllMenuItem.setText("Clean All");
+        cleanAllMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cleanAllButtonActionPerformed(evt);
+            }
+        });
+        grailsMenu.add(cleanAllMenuItem);
+
+        compileMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.ALT_MASK));
+        compileMenuItem.setText("Compile");
+        compileMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compileButtonActionPerformed(evt);
+            }
+        });
+        grailsMenu.add(compileMenuItem);
+        grailsMenu.add(jSeparator4);
+
+        customCommandMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_PERIOD, java.awt.event.InputEvent.ALT_MASK));
+        customCommandMenuItem.setText("Custom Command...");
+        customCommandMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customCommandMenuItemActionPerformed(evt);
+            }
+        });
+        grailsMenu.add(customCommandMenuItem);
+        grailsMenu.add(jSeparator2);
 
         useStacktraceCheckbox.setText("Use '--stacktrace'");
         useStacktraceCheckbox.setToolTipText("");
-        jMenu3.add(useStacktraceCheckbox);
-        jMenu3.add(jSeparator3);
+        grailsMenu.add(useStacktraceCheckbox);
+        grailsMenu.add(jSeparator3);
 
         jMenu5.setText("Generate");
         jMenu5.setEnabled(false);
-        jMenu3.add(jMenu5);
+        grailsMenu.add(jMenu5);
 
-        menuBar.add(jMenu3);
+        menuBar.add(grailsMenu);
 
         jMenu2.setMnemonic('H');
         jMenu2.setText("Help");
@@ -393,6 +461,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 	
 	private void enableComponents(boolean enabled) {
 		ComponentUtils.enableContainer(toolboxPanel, enabled);
+		grailsMenu.setEnabled(enabled);
 		
 		killProcessButton.setEnabled(!enabled);
 		progressBar.setIndeterminate(!enabled);
@@ -478,6 +547,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 	}
 	
 	private boolean grailsIsInstalled() throws Exception {
+		if (1==1) { return true; }
 		try {
 			executeGrailsProcess(new VersionGrailsProcess());
 			return true;
@@ -594,39 +664,56 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        testAppPatternTextField.setText(null);
+		testAppPatternTextField.setText(null);
 		testAppPatternTextField.requestFocus();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void customCommandMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customCommandMenuItemActionPerformed
+        String command = CustomGrailsCommandDialog.fetchCommand(this);
+		CustomGrailsProcess customGrailsProcess = new CustomGrailsProcess();
+		customGrailsProcess.setCommand(command);
+		
+		executeGrailsProcessAsBackground(customGrailsProcess);
+    }//GEN-LAST:event_customCommandMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cleanAllButton;
+    private javax.swing.JMenuItem cleanAllMenuItem;
     private javax.swing.JButton cleanButton;
+    private javax.swing.JMenuItem cleanMenuItem;
     private javax.swing.JButton compileButton;
+    private javax.swing.JMenuItem compileMenuItem;
     private javax.swing.JScrollPane consoleScrollPane;
     private javax.swing.JTextArea consoleTextArea;
+    private javax.swing.JMenuItem customCommandMenuItem;
+    private javax.swing.JMenu grailsMenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JButton killProcessButton;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JButton runAppButton;
     private javax.swing.JComboBox runAppEnviroComboBox;
+    private javax.swing.JMenuItem runAppMenuItem;
     private javax.swing.JButton testAppButton;
     private javax.swing.JCheckBox testAppIntegCheckBox;
+    private javax.swing.JMenuItem testAppMenuItem;
     private javax.swing.JTextField testAppPatternTextField;
     private javax.swing.JCheckBox testAppUnitCheckBox;
     private javax.swing.JPanel toolboxPanel;
