@@ -1,5 +1,10 @@
 package ph.kana.grtb.process;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class TestAppGrailsProcess extends GrailsProcess {
 	private boolean includeUnitTest;
 	private boolean includeIntegTest;
@@ -31,16 +36,18 @@ public class TestAppGrailsProcess extends GrailsProcess {
 
 	@Override
 	public String[] getArgs() {
-		StringBuilder builder = new StringBuilder("test-app ");
+		List<String> args = new ArrayList<>();
 		
+		args.add("test-app");
 		if (isIncludeUnitTest()) {
-			builder.append("unit: ");
+			args.add("-unit");
 		}
 		if (isIncludeIntegTest()) {
-			builder.append("integration: ");
+			args.add("-integration");
 		}
-		builder.append(getClassNamePattern());
+		List<String> classPatterns = Arrays.asList(getClassNamePattern());
+		args.addAll(classPatterns);
 		
-		return builder.toString().split(" ");
+		return args.toArray(new String[args.size()]);
 	}
 }
