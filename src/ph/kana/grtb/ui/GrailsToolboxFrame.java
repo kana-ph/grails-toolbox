@@ -478,7 +478,6 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 	}
 	
 	private boolean grailsIsInstalled() throws Exception {
-		if (1 == 1) { return true; }
 		try {
 			executeGrailsProcess(new VersionGrailsProcess());
 			return true;
