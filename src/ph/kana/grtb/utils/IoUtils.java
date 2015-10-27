@@ -19,7 +19,7 @@ public class IoUtils {
 	
 	private IoUtils() { }
 	
-	public static final File CACHE = new File(".grtb-prev");
+	public static final File CACHE = new File(".grtb-cache");
 	
 	public static void printToFile(String content, File file) throws IOException {
 		try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
