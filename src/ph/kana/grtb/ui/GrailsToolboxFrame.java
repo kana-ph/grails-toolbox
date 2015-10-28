@@ -669,10 +669,12 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
     private void customCommandMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customCommandMenuItemActionPerformed
         String command = CustomGrailsCommandDialog.fetchCommand(this);
-		CustomGrailsProcess customCommand = new CustomGrailsProcess();
-		customCommand.setCommand(command);
 		
-		executeGrailsProcessAsBackground(customCommand);
+		if (null != command) {
+			CustomGrailsProcess customCommand = new CustomGrailsProcess();
+			customCommand.setCommand(command);
+			executeGrailsProcessAsBackground(customCommand);
+		}
     }//GEN-LAST:event_customCommandMenuItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
