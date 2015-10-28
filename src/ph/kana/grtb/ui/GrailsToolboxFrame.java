@@ -551,7 +551,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 			executeGrailsProcess(new VersionGrailsProcess());
 			return true;
 		} catch (IOException e) {
-			handleException(e);
+			e.printStackTrace(System.err);
 			return false;
 		}
 	}
