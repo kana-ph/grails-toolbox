@@ -96,6 +96,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         runAppButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Running Rabbit-32.png"))); // NOI18N
         runAppButton.setText("Run App");
+        runAppButton.setToolTipText(null);
         runAppButton.setFocusable(false);
         runAppButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         runAppButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -134,6 +135,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         testAppButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Test Tube-32.png"))); // NOI18N
         testAppButton.setText("Test App");
+        testAppButton.setToolTipText(null);
         testAppButton.setFocusable(false);
         testAppButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         testAppButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -160,7 +162,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jButton1.setText("x");
-        jButton1.setToolTipText("");
+        jButton1.setToolTipText("Clear Classnames Pattern");
         jButton1.setFocusable(false);
         jButton1.setIconTextGap(0);
         jButton1.setMargin(new java.awt.Insets(1, 1, 1, 1));
@@ -204,6 +206,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         compileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Robot-25.png"))); // NOI18N
         compileButton.setText("Compile");
+        compileButton.setToolTipText("Compile Grails Project");
         compileButton.setFocusable(false);
         compileButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         compileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +217,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         cleanAllButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Mushroom Cloud-25.png"))); // NOI18N
         cleanAllButton.setText("Clean All");
+        cleanAllButton.setToolTipText("Delete compiled files and libraries");
         cleanAllButton.setFocusable(false);
         cleanAllButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         cleanAllButton.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +228,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         cleanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Broom-25.png"))); // NOI18N
         cleanButton.setText("Clean");
+        cleanButton.setToolTipText("Delete compiled files");
         cleanButton.setFocusable(false);
         cleanButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         cleanButton.addActionListener(new java.awt.event.ActionListener() {
@@ -255,6 +260,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         killProcessButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Horror-25.png"))); // NOI18N
         killProcessButton.setText("Kill Process");
+        killProcessButton.setToolTipText("Terminate currently running process");
         killProcessButton.setEnabled(false);
         killProcessButton.setFocusable(false);
         killProcessButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -301,7 +307,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         consoleScrollPane.setViewportView(consoleTextArea);
 
         progressBar.setFont(new java.awt.Font("Monospaced", 0, 11)); // NOI18N
-        progressBar.setToolTipText("");
+        progressBar.setToolTipText(null);
         progressBar.setFocusable(false);
         progressBar.setRequestFocusEnabled(false);
         progressBar.setString("");
@@ -309,11 +315,12 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         jMenu1.setMnemonic('F');
         jMenu1.setText("File");
+        jMenu1.setToolTipText(null);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setMnemonic('O');
         jMenuItem1.setText("Open Project");
-        jMenuItem1.setToolTipText("");
+        jMenuItem1.setToolTipText(null);
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -325,11 +332,12 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         jMenu4.setMnemonic('l');
         jMenu4.setText("Console");
-        jMenu4.setToolTipText("");
+        jMenu4.setToolTipText(null);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setMnemonic('S');
         jMenuItem2.setText("Save");
+        jMenuItem2.setToolTipText(null);
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -340,6 +348,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem5.setMnemonic('l');
         jMenuItem5.setText("Clear");
+        jMenuItem5.setToolTipText(null);
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -351,10 +360,11 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         grailsMenu.setMnemonic('G');
         grailsMenu.setText("Grails");
-        grailsMenu.setToolTipText("");
+        grailsMenu.setToolTipText(null);
 
         runAppMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         runAppMenuItem.setText("Run App");
+        runAppMenuItem.setToolTipText(null);
         runAppMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 runAppButtonActionPerformed(evt);
@@ -364,6 +374,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         testAppMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         testAppMenuItem.setText("Test App");
+        testAppMenuItem.setToolTipText(null);
         testAppMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 testAppButtonActionPerformed(evt);
@@ -373,6 +384,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         cleanMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         cleanMenuItem.setText("Clean");
+        cleanMenuItem.setToolTipText(null);
         cleanMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cleanButtonActionPerformed(evt);
@@ -382,6 +394,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         cleanAllMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         cleanAllMenuItem.setText("Clean All");
+        cleanAllMenuItem.setToolTipText(null);
         cleanAllMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cleanAllButtonActionPerformed(evt);
@@ -391,6 +404,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         compileMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         compileMenuItem.setText("Compile");
+        compileMenuItem.setToolTipText(null);
         compileMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 compileButtonActionPerformed(evt);
@@ -401,6 +415,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         customCommandMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_SLASH, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         customCommandMenuItem.setText("Custom Command...");
+        customCommandMenuItem.setToolTipText(null);
         customCommandMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 customCommandMenuItemActionPerformed(evt);
@@ -410,7 +425,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         grailsMenu.add(jSeparator2);
 
         useStacktraceCheckbox.setText("Use '--stacktrace'");
-        useStacktraceCheckbox.setToolTipText("");
+        useStacktraceCheckbox.setToolTipText(null);
         grailsMenu.add(useStacktraceCheckbox);
         grailsMenu.add(jSeparator3);
 
@@ -422,10 +437,12 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         jMenu2.setMnemonic('H');
         jMenu2.setText("Help");
+        jMenu2.setToolTipText(null);
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuItem3.setMnemonic('A');
         jMenuItem3.setText("About");
+        jMenuItem3.setToolTipText(null);
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -435,6 +452,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         jMenu2.add(jSeparator5);
 
         jMenuItem6.setText("v 1.2b");
+        jMenuItem6.setToolTipText("Grails Toolbox version");
         jMenuItem6.setEnabled(false);
         jMenu2.add(jMenuItem6);
 
@@ -562,6 +580,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 	}
 	
 	private boolean grailsIsInstalled() throws Exception {
+		if (1 == 1) return true;
 		try {
 			executeGrailsProcess(new VersionGrailsProcess());
 			return true;
