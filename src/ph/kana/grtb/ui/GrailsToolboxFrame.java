@@ -295,6 +295,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         consoleTextArea.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
         consoleTextArea.setForeground(new java.awt.Color(255, 225, 225));
         consoleTextArea.setRows(5);
+        consoleTextArea.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         consoleScrollPane.setViewportView(consoleTextArea);
 
         progressBar.setFont(new java.awt.Font("Monospaced", 0, 11)); // NOI18N
@@ -350,7 +351,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         grailsMenu.setText("Grails");
         grailsMenu.setToolTipText("");
 
-        runAppMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
+        runAppMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         runAppMenuItem.setText("Run App");
         runAppMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,7 +360,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         });
         grailsMenu.add(runAppMenuItem);
 
-        testAppMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
+        testAppMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         testAppMenuItem.setText("Test App");
         testAppMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,7 +369,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         });
         grailsMenu.add(testAppMenuItem);
 
-        cleanMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        cleanMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         cleanMenuItem.setText("Clean");
         cleanMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -377,7 +378,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         });
         grailsMenu.add(cleanMenuItem);
 
-        cleanAllMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        cleanAllMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         cleanAllMenuItem.setText("Clean All");
         cleanAllMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -386,7 +387,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         });
         grailsMenu.add(cleanAllMenuItem);
 
-        compileMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.ALT_MASK));
+        compileMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         compileMenuItem.setText("Compile");
         compileMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,7 +397,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         grailsMenu.add(compileMenuItem);
         grailsMenu.add(jSeparator4);
 
-        customCommandMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_PERIOD, java.awt.event.InputEvent.ALT_MASK));
+        customCommandMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_SLASH, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         customCommandMenuItem.setText("Custom Command...");
         customCommandMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
