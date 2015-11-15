@@ -71,6 +71,8 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         jMenuItem4.setText("jMenuItem4");
 
@@ -430,6 +432,11 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem3);
+        jMenu2.add(jSeparator5);
+
+        jMenuItem6.setText("v 1.2b");
+        jMenuItem6.setEnabled(false);
+        jMenu2.add(jMenuItem6);
 
         menuBar.add(jMenu2);
 
@@ -713,6 +720,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -720,6 +728,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JButton killProcessButton;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
