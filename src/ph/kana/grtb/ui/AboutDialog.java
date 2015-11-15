@@ -148,8 +148,8 @@ public class AboutDialog extends javax.swing.JDialog {
 	private void openLink(String link) {
 		if (Desktop.isDesktopSupported()) {
             try {
-                URI icons8Website = new URI(link);
-                Desktop.getDesktop().browse(icons8Website);
+                URI websiteUri = new URI(link);
+                Desktop.getDesktop().browse(websiteUri);
             }
             catch (IOException | URISyntaxException e) {
                 e.printStackTrace(System.err);
@@ -172,7 +172,7 @@ public class AboutDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        openLink("https://github.com/kana0011");
+        openLink("https://github.com/kana0011/grails-toolbox");
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
