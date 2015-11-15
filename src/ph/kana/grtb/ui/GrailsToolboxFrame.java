@@ -1,5 +1,6 @@
 package ph.kana.grtb.ui;
 
+import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
@@ -148,6 +149,12 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         testAppIntegCheckBox.setFocusable(false);
 
         jLabel1.setText("Classnames Pattern");
+
+        testAppPatternTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                testAppPatternTextFieldKeyPressed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jButton1.setText("x");
@@ -676,6 +683,12 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 			executeGrailsProcessAsBackground(customCommand);
 		}
     }//GEN-LAST:event_customCommandMenuItemActionPerformed
+
+    private void testAppPatternTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_testAppPatternTextFieldKeyPressed
+        if (KeyEvent.VK_ENTER == evt.getKeyCode()) {
+			testAppButtonActionPerformed(null);
+		}
+    }//GEN-LAST:event_testAppPatternTextFieldKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cleanAllButton;
