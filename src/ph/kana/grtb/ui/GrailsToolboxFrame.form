@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JMenuItem" name="jMenuItem4">
       <Properties>
@@ -593,7 +593,7 @@
               <Image iconType="3" name="/ph/kana/grtb/ui/icon/Horror-25.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Kill Process"/>
-            <Property name="toolTipText" type="java.lang.String" value="Terminate currently running process"/>
+            <Property name="toolTipText" type="java.lang.String" value="Terminate currently running process.&#xa;Sends SIGTERM"/>
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>

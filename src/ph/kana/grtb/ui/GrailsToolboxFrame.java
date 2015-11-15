@@ -260,7 +260,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         killProcessButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Horror-25.png"))); // NOI18N
         killProcessButton.setText("Kill Process");
-        killProcessButton.setToolTipText("Terminate currently running process");
+        killProcessButton.setToolTipText("Terminate currently running process.\nSends SIGTERM");
         killProcessButton.setEnabled(false);
         killProcessButton.setFocusable(false);
         killProcessButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
