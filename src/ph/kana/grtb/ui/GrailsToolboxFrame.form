@@ -394,7 +394,6 @@
                     <StringItem index="2" value="test"/>
                   </StringArray>
                 </Property>
-                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="useConsoleCheckbox">

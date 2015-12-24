@@ -22,6 +22,8 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 	
 	public GrailsToolboxFrame() {
 		initComponents();
+		
+		consoleTextArea.requestFocus();
 		ComponentUtils.implementAutoScroll(consoleTextArea);
 	}
 
@@ -108,7 +110,6 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
         runAppEnviroComboBox.setEditable(true);
         runAppEnviroComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "dev", "prod", "test" }));
-        runAppEnviroComboBox.setFocusable(false);
 
         useConsoleCheckbox.setText("Use Console");
         useConsoleCheckbox.setFocusable(false);
