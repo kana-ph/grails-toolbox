@@ -219,7 +219,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="v 1.2b"/>
+                <Property name="text" type="java.lang.String" value="v 1.2c"/>
                 <Property name="toolTipText" type="java.lang.String" value="Grails Toolbox version"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
@@ -289,7 +289,7 @@
                           <Component id="toggleToolboxButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="toolboxPanel" pref="606" max="32767" attributes="0"/>
+                  <Component id="toolboxPanel" pref="608" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -336,7 +336,7 @@
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="49" max="32767" attributes="0"/>
+                  <EmptySpace pref="51" max="32767" attributes="0"/>
                   <Component id="killProcessButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

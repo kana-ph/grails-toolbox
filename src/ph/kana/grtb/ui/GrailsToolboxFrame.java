@@ -294,7 +294,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(killProcessButton)
                 .addContainerGap())
         );
@@ -462,7 +462,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         jMenu2.add(jMenuItem3);
         jMenu2.add(jSeparator5);
 
-        jMenuItem6.setText("v 1.2b");
+        jMenuItem6.setText("v 1.2c");
         jMenuItem6.setToolTipText("Grails Toolbox version");
         jMenuItem6.setEnabled(false);
         jMenu2.add(jMenuItem6);
@@ -498,7 +498,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(toggleToolboxButton)))
-                    .addComponent(toolboxPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE))
+                    .addComponent(toolboxPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
