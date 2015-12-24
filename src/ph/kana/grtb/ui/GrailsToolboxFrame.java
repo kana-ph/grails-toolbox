@@ -53,6 +53,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         consoleScrollPane = new javax.swing.JScrollPane();
         consoleTextArea = new javax.swing.JTextArea();
         progressBar = new javax.swing.JProgressBar();
+        toggleToolboxButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -314,6 +315,15 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         progressBar.setString("");
         progressBar.setStringPainted(true);
 
+        toggleToolboxButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        toggleToolboxButton.setText("\u00ab");
+        toggleToolboxButton.setFocusable(false);
+        toggleToolboxButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toggleToolboxButtonActionPerformed(evt);
+            }
+        });
+
         jMenu1.setMnemonic('F');
         jMenu1.setText("File");
         jMenu1.setToolTipText(null);
@@ -470,8 +480,11 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
                 .addComponent(toolboxPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(consoleScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
-                    .addComponent(progressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(consoleScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(toggleToolboxButton)
+                        .addGap(2, 2, 2)
+                        .addComponent(progressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -482,7 +495,9 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(consoleScrollPane)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(toggleToolboxButton)))
                     .addComponent(toolboxPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -717,6 +732,13 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 		}
     }//GEN-LAST:event_testAppPatternTextFieldKeyPressed
 
+    private void toggleToolboxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toggleToolboxButtonActionPerformed
+        boolean toggledToolboxVisiblity = !toolboxPanel.isVisible();
+		
+		toolboxPanel.setVisible(toggledToolboxVisiblity);
+		toggleToolboxButton.setText(toggledToolboxVisiblity ? "\u00ab" : "\u00bb");
+    }//GEN-LAST:event_toggleToolboxButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cleanAllButton;
     private javax.swing.JMenuItem cleanAllMenuItem;
@@ -759,6 +781,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem testAppMenuItem;
     private javax.swing.JTextField testAppPatternTextField;
     private javax.swing.JCheckBox testAppUnitCheckBox;
+    private javax.swing.JButton toggleToolboxButton;
     private javax.swing.JPanel toolboxPanel;
     private javax.swing.JCheckBox useConsoleCheckbox;
     private javax.swing.JCheckBoxMenuItem useStacktraceCheckbox;
