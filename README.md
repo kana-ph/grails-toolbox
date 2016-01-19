@@ -1,4 +1,4 @@
-# Grails Toolbox
+## Grails Toolbox
 
 Little environment to run grails commands.
 
