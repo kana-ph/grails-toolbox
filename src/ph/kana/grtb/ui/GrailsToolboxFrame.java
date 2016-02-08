@@ -73,7 +73,8 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         customCommandMenuItem = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        useStacktraceCheckbox = new javax.swing.JCheckBoxMenuItem();
+        addStacktraceCheckbox = new javax.swing.JCheckBoxMenuItem();
+        addVerboseCheckbox = new javax.swing.JCheckBoxMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenu5 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -468,9 +469,12 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         grailsMenu.add(customCommandMenuItem);
         grailsMenu.add(jSeparator2);
 
-        useStacktraceCheckbox.setText("Use '--stacktrace'");
-        useStacktraceCheckbox.setToolTipText(null);
-        grailsMenu.add(useStacktraceCheckbox);
+        addStacktraceCheckbox.setText("Add '--stacktrace'");
+        addStacktraceCheckbox.setToolTipText(null);
+        grailsMenu.add(addStacktraceCheckbox);
+
+        addVerboseCheckbox.setText("Add '--verbose'");
+        grailsMenu.add(addVerboseCheckbox);
         grailsMenu.add(jSeparator3);
 
         jMenu5.setText("Generate");
@@ -557,7 +561,8 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
 	private void executeGrailsProcessAsBackground(final GrailsProcess grailsProcess) {
 		grailsProcess.setGrailsProjectDirectrory(grailsProjectDirectory);
-		grailsProcess.setStacktraceMode(useStacktraceCheckbox.isSelected());
+		grailsProcess.setStacktraceMode(addStacktraceCheckbox.isSelected());
+		grailsProcess.setVerboseMode(addVerboseCheckbox.isSelected());
 
 		consoleTextArea.setText("");
 		enableComponents(false);
@@ -794,6 +799,8 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem addStacktraceCheckbox;
+    private javax.swing.JCheckBoxMenuItem addVerboseCheckbox;
     private javax.swing.JButton cleanAllButton;
     private javax.swing.JMenuItem cleanAllMenuItem;
     private javax.swing.JButton cleanButton;
@@ -842,6 +849,5 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem toggleToolboxMenuItem;
     private javax.swing.JPanel toolboxPanel;
     private javax.swing.JCheckBox useConsoleCheckbox;
-    private javax.swing.JCheckBoxMenuItem useStacktraceCheckbox;
     // End of variables declaration//GEN-END:variables
 }

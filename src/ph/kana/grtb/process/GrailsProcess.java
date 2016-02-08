@@ -10,6 +10,7 @@ public abstract class GrailsProcess {
 	private Process osProcess;
 	private File grailsProjectDirectrory;
 	private boolean stacktraceMode;
+	private boolean verboseMode;
 	
 	protected abstract String[] getArgs();
 	
@@ -52,6 +53,9 @@ public abstract class GrailsProcess {
 		return stacktraceMode;
 	}
 	
+	public void setVerboseMode(boolean verboseMode) {
+		this.verboseMode = verboseMode;
+	}
 	public void setStacktraceMode(boolean useStackTraceMode) {
 		this.stacktraceMode = useStackTraceMode;
 	}

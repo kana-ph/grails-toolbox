@@ -205,12 +205,17 @@
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
             </MenuItem>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="useStacktraceCheckbox">
+            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="addStacktraceCheckbox">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Use &apos;--stacktrace&apos;"/>
+                <Property name="text" type="java.lang.String" value="Add &apos;--stacktrace&apos;"/>
                 <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="null" type="code"/>
                 </Property>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="addVerboseCheckbox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add &apos;--verbose&apos;"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator3">
