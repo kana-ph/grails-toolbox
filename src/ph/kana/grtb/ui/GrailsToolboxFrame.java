@@ -499,7 +499,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         jMenu2.add(jMenuItem3);
         jMenu2.add(jSeparator5);
 
-        jMenuItem6.setText("v 1.3");
+        jMenuItem6.setText("v 1.4");
         jMenuItem6.setToolTipText("Grails Toolbox version");
         jMenuItem6.setEnabled(false);
         jMenu2.add(jMenuItem6);
