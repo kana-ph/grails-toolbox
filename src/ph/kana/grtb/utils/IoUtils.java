@@ -47,8 +47,10 @@ public class IoUtils {
 	}
 	
 	public static void saveCurrentProject(File directory) throws IOException {
-		CACHE.setProperty(PREVIOUS_PROJECT, directory.getAbsolutePath());
-		saveCache();
+		if (directory != null) {
+			CACHE.setProperty(PREVIOUS_PROJECT, directory.getAbsolutePath());
+			saveCache();
+		}
 	}
 	
 	public static File fetchPreviousProject() throws IOException {
