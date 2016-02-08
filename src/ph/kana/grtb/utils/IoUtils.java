@@ -99,7 +99,7 @@ public class IoUtils {
 	}
 	
 	private static void printCommandLog(char icon, String message, String command) {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-		System.out.println(String.format("[GrailsToolbox](%s) %s %c %s", dateFormat.format(new Date()), message, icon, command));
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MMMdd HH:mm:ss");
+		System.out.println(String.format("[GrTb](%s) %s %c %s", dateFormat.format(new Date()), message, icon, command));
 	}
 }
