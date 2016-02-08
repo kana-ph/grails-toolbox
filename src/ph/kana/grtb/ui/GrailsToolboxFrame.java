@@ -31,7 +31,6 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem4 = new javax.swing.JMenuItem();
         toolboxPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         runAppButton = new javax.swing.JButton();
@@ -60,6 +59,8 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
+        toggleToolboxMenuItem = new javax.swing.JMenuItem();
         grailsMenu = new javax.swing.JMenu();
         runAppMenuItem = new javax.swing.JMenuItem();
         testAppMenuItem = new javax.swing.JMenuItem();
@@ -77,8 +78,6 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jMenuItem6 = new javax.swing.JMenuItem();
 
-        jMenuItem4.setText("jMenuItem4");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Grails Toolbox");
         setMinimumSize(new java.awt.Dimension(830, 750));
@@ -88,11 +87,6 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
             }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
-            }
-        });
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                formKeyTyped(evt);
             }
         });
 
@@ -371,6 +365,16 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
             }
         });
         jMenu4.add(jMenuItem5);
+        jMenu4.add(jSeparator6);
+
+        toggleToolboxMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_SPACE, java.awt.event.InputEvent.CTRL_MASK));
+        toggleToolboxMenuItem.setText("Hide Toolbox Buttons");
+        toggleToolboxMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toggleToolboxMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu4.add(toggleToolboxMenuItem);
 
         menuBar.add(jMenu4);
 
@@ -744,12 +748,12 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
 		toolboxPanel.setVisible(toggledToolboxVisiblity);
 		toggleToolboxButton.setText(toggledToolboxVisiblity ? "\u00ab" : "\u00bb");
+		toggleToolboxMenuItem.setText(toggledToolboxVisiblity ? "Hide Toolbox Buttons" : "Show Toolbox Buttons");
     }//GEN-LAST:event_toggleToolboxButtonActionPerformed
 
-    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
-		System.out.println(evt.getKeyCode());
-		System.out.println(evt.getKeyCode());
-    }//GEN-LAST:event_formKeyTyped
+    private void toggleToolboxMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toggleToolboxMenuItemActionPerformed
+        toggleToolboxButtonActionPerformed(evt);
+    }//GEN-LAST:event_toggleToolboxMenuItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cleanAllButton;
@@ -771,7 +775,6 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel2;
@@ -782,6 +785,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JButton killProcessButton;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
@@ -794,6 +798,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     private javax.swing.JTextField testAppPatternTextField;
     private javax.swing.JCheckBox testAppUnitCheckBox;
     private javax.swing.JButton toggleToolboxButton;
+    private javax.swing.JMenuItem toggleToolboxMenuItem;
     private javax.swing.JPanel toolboxPanel;
     private javax.swing.JCheckBox useConsoleCheckbox;
     private javax.swing.JCheckBoxMenuItem useStacktraceCheckbox;
