@@ -233,7 +233,7 @@
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Grails Toolbox"/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[830, 700]"/>
+      <Dimension value="[830, 750]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -265,7 +265,7 @@
               <Component id="toolboxPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="consoleScrollPane" pref="669" max="32767" attributes="0"/>
+                  <Component id="consoleScrollPane" pref="600" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="toggleToolboxButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -289,7 +289,7 @@
                           <Component id="toggleToolboxButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="toolboxPanel" pref="608" max="32767" attributes="0"/>
+                  <Component id="toolboxPanel" pref="655" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -336,7 +336,7 @@
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="51" max="32767" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
                   <Component id="killProcessButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -424,7 +424,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="testAppUnitCheckBox" alignment="0" max="32767" attributes="0"/>
-                  <Component id="testAppIntegCheckBox" alignment="0" pref="164" max="32767" attributes="0"/>
+                  <Component id="testAppIntegCheckBox" alignment="0" max="32767" attributes="0"/>
                   <Component id="testAppButton" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
