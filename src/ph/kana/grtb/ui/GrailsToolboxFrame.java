@@ -31,6 +31,9 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        consolePopupMenu = new javax.swing.JPopupMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         toolboxPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         runAppButton = new javax.swing.JButton();
@@ -58,7 +61,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        consoleClearMenuItem = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
         toggleToolboxMenuItem = new javax.swing.JMenuItem();
         grailsMenu = new javax.swing.JMenu();
@@ -77,6 +80,22 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jMenuItem6 = new javax.swing.JMenuItem();
+
+        jMenuItem4.setText("Copy");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        consolePopupMenu.add(jMenuItem4);
+
+        jMenuItem7.setText("Clear");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        consolePopupMenu.add(jMenuItem7);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Grails Toolbox");
@@ -305,6 +324,11 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         consoleTextArea.setForeground(new java.awt.Color(255, 225, 225));
         consoleTextArea.setRows(5);
         consoleTextArea.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        consoleTextArea.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                consoleTextAreaMousePressed(evt);
+            }
+        });
         consoleScrollPane.setViewportView(consoleTextArea);
 
         progressBar.setFont(new java.awt.Font("Monospaced", 0, 11)); // NOI18N
@@ -355,16 +379,16 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem2);
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem5.setMnemonic('l');
-        jMenuItem5.setText("Clear");
-        jMenuItem5.setToolTipText(null);
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        consoleClearMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        consoleClearMenuItem.setMnemonic('l');
+        consoleClearMenuItem.setText("Clear");
+        consoleClearMenuItem.setToolTipText(null);
+        consoleClearMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                consoleClearMenuItemActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem5);
+        jMenu4.add(consoleClearMenuItem);
         jMenu4.add(jSeparator6);
 
         toggleToolboxMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_SPACE, java.awt.event.InputEvent.CTRL_MASK));
@@ -718,9 +742,9 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 		ComponentUtils.refreshComponents(this);
     }//GEN-LAST:event_formWindowActivated
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void consoleClearMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consoleClearMenuItemActionPerformed
 		consoleTextArea.setText(null);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_consoleClearMenuItemActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 		testAppPatternTextField.setText(null);
@@ -755,6 +779,20 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         toggleToolboxButtonActionPerformed(evt);
     }//GEN-LAST:event_toggleToolboxMenuItemActionPerformed
 
+    private void consoleTextAreaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consoleTextAreaMousePressed
+		if (evt.isPopupTrigger()) {
+			consolePopupMenu.show(consoleTextArea, evt.getX(), evt.getY());
+		}
+    }//GEN-LAST:event_consoleTextAreaMousePressed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        consoleTextArea.copy();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        consoleClearMenuItemActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cleanAllButton;
     private javax.swing.JMenuItem cleanAllMenuItem;
@@ -762,6 +800,8 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem cleanMenuItem;
     private javax.swing.JButton compileButton;
     private javax.swing.JMenuItem compileMenuItem;
+    private javax.swing.JMenuItem consoleClearMenuItem;
+    private javax.swing.JPopupMenu consolePopupMenu;
     private javax.swing.JScrollPane consoleScrollPane;
     private javax.swing.JTextArea consoleTextArea;
     private javax.swing.JMenuItem customCommandMenuItem;
@@ -775,8 +815,9 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
