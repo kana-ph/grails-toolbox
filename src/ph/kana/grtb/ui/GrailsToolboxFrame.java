@@ -25,6 +25,9 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
 		consoleTextArea.requestFocus();
 		ComponentUtils.implementAutoScroll(consoleTextArea);
+
+		killProcessButton.setVisible(false);
+		killProcessPopupMenu.setVisible(false);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -34,6 +37,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         consolePopupMenu = new javax.swing.JPopupMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        killProcessPopupMenu = new javax.swing.JMenuItem();
         toolboxPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         runAppButton = new javax.swing.JButton();
@@ -97,6 +101,14 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
             }
         });
         consolePopupMenu.add(jMenuItem7);
+
+        killProcessPopupMenu.setText("Kill Process");
+        killProcessPopupMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                killProcessPopupMenuActionPerformed(evt);
+            }
+        });
+        consolePopupMenu.add(killProcessPopupMenu);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Grails Toolbox");
@@ -282,7 +294,6 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         killProcessButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ph/kana/grtb/ui/icon/Horror-25.png"))); // NOI18N
         killProcessButton.setText("Kill Process");
         killProcessButton.setToolTipText("Terminate currently running process.\nSends SIGTERM");
-        killProcessButton.setVisible(false);
         killProcessButton.setFocusable(false);
         killProcessButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         killProcessButton.addActionListener(new java.awt.event.ActionListener() {
@@ -301,7 +312,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(killProcessButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(killProcessButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         toolboxPanelLayout.setVerticalGroup(
@@ -550,8 +561,10 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 		grailsMenu.setEnabled(enabled);
 
 		killProcessButton.setVisible(!enabled);
-		killProcessButton.setEnabled(!enabled);
+		killProcessPopupMenu.setVisible(!enabled);
 		progressBar.setIndeterminate(!enabled);
+
+		killProcessButton.setEnabled(true);
 	}
 
 	private void executeGrailsProcess(GrailsProcess grailsProcess) throws InterruptedException, IOException {
@@ -799,6 +812,10 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
         consoleClearMenuItemActionPerformed(evt);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void killProcessPopupMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_killProcessPopupMenuActionPerformed
+        killProcessButtonActionPerformed(evt);
+    }//GEN-LAST:event_killProcessPopupMenuActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBoxMenuItem addStacktraceCheckbox;
     private javax.swing.JCheckBoxMenuItem addVerboseCheckbox;
@@ -836,6 +853,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JButton killProcessButton;
+    private javax.swing.JMenuItem killProcessPopupMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JButton runAppButton;

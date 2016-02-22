@@ -24,6 +24,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem7ActionPerformed"/>
           </Events>
         </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="killProcessPopupMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kill Process"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="killProcessPopupMenuActionPerformed"/>
+          </Events>
+        </MenuItem>
       </SubComponents>
     </Container>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
@@ -637,7 +645,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Kill Process"/>
             <Property name="toolTipText" type="java.lang.String" value="Terminate currently running process.&#xa;Sends SIGTERM"/>
-            <Property name="visible" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
