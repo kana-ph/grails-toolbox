@@ -264,7 +264,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="v 1.4"/>
+                <Property name="text" type="java.lang.String" value="v 1.4a"/>
                 <Property name="toolTipText" type="java.lang.String" value="Grails Toolbox version"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
