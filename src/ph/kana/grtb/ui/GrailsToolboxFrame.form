@@ -358,7 +358,7 @@
                       <Component id="jPanel4" max="32767" attributes="0"/>
                       <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPanel5" max="32767" attributes="0"/>
-                      <Component id="killProcessButton" alignment="0" max="32767" attributes="0"/>
+                      <Component id="killProcessButton" alignment="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -637,7 +637,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Kill Process"/>
             <Property name="toolTipText" type="java.lang.String" value="Terminate currently running process.&#xa;Sends SIGTERM"/>
-            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="visible" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
