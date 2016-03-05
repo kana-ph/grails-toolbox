@@ -17,9 +17,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="850.0" stylesheets="@style.fxml.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Accordion prefHeight="750.0" prefWidth="240.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Accordion expandedPane="$runAppPane" prefHeight="750.0" prefWidth="240.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <panes>
-            <TitledPane animated="false" text="Run App">
+            <TitledPane fx:id="runAppPane" text="Run App">
                <content>
                   <GridPane alignment="CENTER" gridLinesVisible="true">
                      <columnConstraints>
@@ -53,7 +53,7 @@
                   </GridPane>
                </content>
             </TitledPane>
-            <TitledPane animated="false" prefHeight="696.0" prefWidth="244.0" text="Test App">
+            <TitledPane fx:id="testAppPane" prefHeight="696.0" prefWidth="244.0" text="Test App">
                <content>
                   <GridPane alignment="CENTER" gridLinesVisible="true">
                      <columnConstraints>
@@ -91,7 +91,7 @@
                   </GridPane>
                </content>
             </TitledPane>
-            <TitledPane animated="false" text="Compile / Clean">
+            <TitledPane fx:id="compilePane" text="Compile / Clean">
                <content>
                   <GridPane alignment="CENTER" gridLinesVisible="true">
                      <columnConstraints>
