@@ -10,3 +10,7 @@
 .large-button {
 	-fx-pref-height: 60px;
 }
+
+.med-button {
+	-fx-pref-height: 40px;
+}
