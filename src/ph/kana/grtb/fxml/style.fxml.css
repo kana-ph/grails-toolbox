@@ -1,0 +1,12 @@
+.toolbox-menu {
+	-fx-alignment: 'center';
+	-fx-spacing: 10px;
+}
+
+.toolbox-item {
+	-fx-pref-width: 200px;
+}
+
+.large-button {
+	-fx-pref-height: 60px;
+}
