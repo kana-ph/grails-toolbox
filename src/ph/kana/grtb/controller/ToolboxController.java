@@ -2,18 +2,32 @@ package ph.kana.grtb.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
+import ph.kana.grtb.service.GrailsService;
 
+import java.io.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class ToolboxController {
+
+	GrailsService grailsService = new GrailsService();
+
 	@FXML
 	private Button collapseButton;
+	@FXML
+	private TextArea consoleTextArea;
 	@FXML
 	private AnchorPane rootAnchorPane;
 	@FXML
 	private AnchorPane consoleAnchorPane;
+
+	@FXML
+	public void initialize() {
+		InputStream inputStream = grailsService.checkInstallation();
+		streamToTextArea(inputStream, consoleTextArea);
+	}
 
 	@FXML
 	public void toggleToolbox() {
@@ -37,5 +51,18 @@ public class ToolboxController {
 				}
 			}
 		}, 0, 1);
+	}
+
+	//TODO move this
+	private void streamToTextArea(InputStream inputStream, TextArea textArea) {
+		textArea.setText("");
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+			String line = reader.readLine();
+			while (null != line) {
+				textArea.appendText(line);
+				textArea.appendText("\n");
+				line = reader.readLine();
+			}
+		} catch (IOException e) { }
 	}
 }

@@ -64,4 +64,6 @@ public abstract class GrailsProcess {
 	public InputStream getInputStream() {
 		return process.getInputStream();
 	}
+
+	public boolean isAlive() { return process.isAlive(); }
 }

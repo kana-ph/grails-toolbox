@@ -5,4 +5,6 @@ public class GrailsProcessException extends RuntimeException {
 	public GrailsProcessException(String message, Throwable cause) {
 		super(message, cause);
 	}
+
+	public GrailsProcessException(String message) { super(message); }
 }
