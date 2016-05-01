@@ -777,7 +777,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
 		if (null != command) {
 			CustomGrailsProcess customCommand = new CustomGrailsProcess();
-			customCommand.setCommand(command);
+			customCommand.setCustomCommand(command);
 			executeGrailsProcessAsBackground(customCommand);
 		}
     }//GEN-LAST:event_customCommandMenuItemActionPerformed

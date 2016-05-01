@@ -3,19 +3,19 @@ package ph.kana.grtb.process;
 @Deprecated
 public class CustomGrailsProcess extends GrailsProcess {
 
-	private String command;
+	private String customCommand;
 
-	public String getCommand() {
-		return command;
+	public String getCustomCommand() {
+		return customCommand;
 	}
 
-	public void setCommand(String command) {
-		this.command = command;
+	public void setCustomCommand(String command) {
+		customCommand = command;
 	}
 	
 	@Override
 	protected String[] getArgs() {
-		return command.split(" ");
+		return customCommand.split(" ");
 	}
 	
 }
