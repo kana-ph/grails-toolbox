@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
+
+import ph.kana.grtb.exception.GrailsProcessException;
 import ph.kana.grtb.process.CleanGrailsProcess;
 import ph.kana.grtb.process.CompileGrailsProcess;
 import ph.kana.grtb.process.ConsoleGrailsProcess;
@@ -574,13 +576,13 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 	}
 
 	private void executeGrailsProcessAsBackground(final GrailsProcess grailsProcess) {
-		grailsProcess.setGrailsProjectDirectrory(grailsProjectDirectory);
+		grailsProcess.setProjectDirectory(grailsProjectDirectory);
 		grailsProcess.setStacktraceMode(addStacktraceCheckbox.isSelected());
 		grailsProcess.setVerboseMode(addVerboseCheckbox.isSelected());
 
 		consoleTextArea.setText("");
 		enableComponents(false);
-		progressBar.setString(grailsProcess.getCommandString());
+		progressBar.setString(grailsProcess.getCommand());
 
 		SwingWorker worker = new SwingWorker<Void, Void>() {
 			@Override
@@ -663,7 +665,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 		ExceptionDialog.showDialog(this, exception);
 		try {
 			currentProcess.stop();
-		} catch (IOException ex) {
+		} catch (GrailsProcessException ex) {
 		}
 	}
 
@@ -724,7 +726,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
     private void killProcessButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_killProcessButtonActionPerformed
 		try {
 			currentProcess.stop();
-		} catch (IOException ex) {
+		} catch (GrailsProcessException ex) {
 			handleException(ex);
 		}
     }//GEN-LAST:event_killProcessButtonActionPerformed
@@ -746,7 +748,7 @@ public class GrailsToolboxFrame extends javax.swing.JFrame {
 
     private void compileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compileButtonActionPerformed
 		CompileGrailsProcess compile = new CompileGrailsProcess();
-		compile.setGrailsProjectDirectrory(grailsProjectDirectory);
+		compile.setProjectDirectory(grailsProjectDirectory);
 
 		executeGrailsProcessAsBackground(compile);
     }//GEN-LAST:event_compileButtonActionPerformed

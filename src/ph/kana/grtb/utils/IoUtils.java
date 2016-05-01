@@ -63,15 +63,15 @@ public class IoUtils {
 	}
 	
 	public static void logRunning(GrailsProcess process) {
-		printCommandLog('\u2192', "Process Running", process.getCommandString());
+		printCommandLog('\u2192', "Process Running", process.getCommand());
 	}
 	
 	public static void logKill(GrailsProcess process) {
-		printCommandLog('\u219b', "Killing Process", process.getCommandString());
+		printCommandLog('\u219b', "Killing Process", process.getCommand());
 	}
 	
 	public static void logExit(GrailsProcess process) {
-		printCommandLog('\u21e5', "Process Exited!", process.getCommandString());
+		printCommandLog('\u21e5', "Process Exited!", process.getCommand());
 	}
 	
 	public static void logProjectChange(File project) {

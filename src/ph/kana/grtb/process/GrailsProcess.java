@@ -3,60 +3,54 @@ package ph.kana.grtb.process;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import ph.kana.grtb.utils.IoUtils;
 
-@Deprecated
+import ph.kana.grtb.exception.GrailsProcessException;
+import ph.kana.grtb.utils.Logger;
+
 public abstract class GrailsProcess {
 
-	private Process osProcess;
-	private File grailsProjectDirectrory;
+	private Process process;
+	private File projectDirectory;
+	private Logger logger = Logger.getLogger();
+
 	private boolean stacktraceMode;
 	private boolean verboseMode;
 
 	protected abstract String[] getArgs();
 
-	public final String getCommandString() {
-		StringBuilder commandString = new StringBuilder("grails");
-		for (String arg : this.getArgs()) {
-			commandString.append(" ").append(arg);
+	public final String getCommand() {
+		return new StringBuilder("grails ")
+			.append(String.join(" ", getArgs()))
+			.append(stacktraceMode? " --stacktrace" : "")
+			.append(verboseMode? " --verbose" : "")
+			.toString();
+	}
+
+	public final void execute() throws GrailsProcessException {
+		String command = getCommand();
+		logger.info("Running command '%s'", command);
+		try {
+			process = Runtime.getRuntime().exec(command, null, getProjectDirectory());
+		} catch (IOException e) {
+			throw new GrailsProcessException("Exception on starting process", e);
 		}
-
-		if (stacktraceMode) {
-			commandString.append(" --stacktrace");
-		}
-
-		if (verboseMode) {
-			commandString.append(" --verbose");
-		}
-
-		return commandString.toString();
 	}
 
-	public final void execute() throws IOException, InterruptedException {
-		String command = getCommandString();
-		IoUtils.logRunning(this);
-		osProcess = Runtime.getRuntime().exec(command, null, getGrailsProjectDirectrory());
+	public void stop() {
+		logger.info("Killing command '%s'", getCommand());
+		process.destroy();
 	}
 
-	public void stop() throws IOException {
-		IoUtils.logKill(this);
-		osProcess.destroy();
+	public File getProjectDirectory() {
+		return projectDirectory;
 	}
 
-	public File getGrailsProjectDirectrory() {
-		return grailsProjectDirectrory;
-	}
-
-	public void setGrailsProjectDirectrory(File grailsProjectDirectrory) {
-		if (grailsProjectDirectrory.isDirectory()) {
-			this.grailsProjectDirectrory = grailsProjectDirectrory;
+	public void setProjectDirectory(File projectDirectory) {
+		if (projectDirectory.isDirectory()) {
+			this.projectDirectory = projectDirectory;
 		} else {
-			throw new IllegalArgumentException("Not a directory: " + grailsProjectDirectrory.getAbsolutePath());
+			throw new IllegalArgumentException("Not a directory: " + projectDirectory.getAbsolutePath());
 		}
-	}
-
-	public boolean getStacktraceMode() {
-		return stacktraceMode;
 	}
 
 	public void setVerboseMode(boolean verboseMode) {
@@ -68,6 +62,6 @@ public abstract class GrailsProcess {
 	}
 
 	public InputStream getInputStream() {
-		return osProcess.getInputStream();
+		return process.getInputStream();
 	}
 }
