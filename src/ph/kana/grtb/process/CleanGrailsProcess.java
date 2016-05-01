@@ -1,5 +1,6 @@
 package ph.kana.grtb.process;
 
+@Deprecated
 public class CleanGrailsProcess extends GrailsProcess {
 	private boolean cleanAllCommand;
 

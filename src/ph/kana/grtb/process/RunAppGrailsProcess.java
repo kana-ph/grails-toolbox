@@ -3,6 +3,7 @@ package ph.kana.grtb.process;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class RunAppGrailsProcess extends GrailsProcess {
 	private String environment;
 

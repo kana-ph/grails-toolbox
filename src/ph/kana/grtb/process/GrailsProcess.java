@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import ph.kana.grtb.utils.IoUtils;
 
+@Deprecated
 public abstract class GrailsProcess {
 
 	private Process osProcess;

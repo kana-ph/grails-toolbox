@@ -1,5 +1,6 @@
 package ph.kana.grtb.process;
 
+@Deprecated
 public class CustomGrailsProcess extends GrailsProcess {
 
 	private String command;

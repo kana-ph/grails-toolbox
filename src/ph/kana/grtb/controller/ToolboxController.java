@@ -9,7 +9,7 @@ import java.util.TimerTask;
 
 public class ToolboxController {
 	@FXML
-	private Button  collapseButton;
+	private Button collapseButton;
 	@FXML
 	private AnchorPane rootAnchorPane;
 	@FXML
