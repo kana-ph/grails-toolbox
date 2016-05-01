@@ -12,6 +12,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -161,6 +162,7 @@
          <children>
             <ProgressBar layoutX="182.0" layoutY="574.0" prefHeight="26.0" prefWidth="577.0" progress="0.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="3.0" />
             <Button fx:id="collapseButton" layoutX="14.0" layoutY="643.0" mnemonicParsing="false" onAction="#toggleToolbox" prefHeight="20.0" prefWidth="26.0" text="«" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" />
+            <TextArea editable="false" layoutX="3.0" layoutY="6.0" prefHeight="200.0" prefWidth="200.0" styleClass="console" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
          </children>
       </AnchorPane>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
