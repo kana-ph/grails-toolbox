@@ -40,7 +40,7 @@
                                     <String fx:value="large-button" />
                                  </styleClass>
                               </Button>
-                              <ComboBox prefWidth="150.0" editable="false" styleClass="toolbox-item">
+                              <ComboBox editable="false" prefWidth="150.0" styleClass="toolbox-item">
                                  <items>
                                     <FXCollections fx:factory="observableArrayList">
                                        <String fx:value="as Grails Server" />
@@ -154,6 +154,10 @@
             </TitledPane>
          </panes>
       </Accordion>
-      <ProgressBar layoutX="240.0" layoutY="706.0" prefHeight="20.0" prefWidth="608.0" progress="0.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="2.0" />
+      <AnchorPane layoutX="240.0" layoutY="1.0" prefHeight="730.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ProgressBar layoutX="182.0" layoutY="574.0" prefWidth="200.0" progress="0.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
