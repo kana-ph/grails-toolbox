@@ -26,8 +26,8 @@ public class ToolboxController {
 		animationTimer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
-				double increment = expanding? -3.0 : 3.0;
-				double finalAnchor = expanding? 3.0 : DEFAULT_CONSOLE_LEFT_ANCHOR;
+				double increment = expanding? -1.0 : 1.0;
+				double finalAnchor = expanding? 2.0 : DEFAULT_CONSOLE_LEFT_ANCHOR;
 
 				double currentAnchor = rootAnchorPane.getLeftAnchor(consoleAnchorPane);
 				if ((expanding && (currentAnchor > finalAnchor)) || (!expanding && currentAnchor < finalAnchor)) {
@@ -36,6 +36,6 @@ public class ToolboxController {
 					this.cancel();
 				}
 			}
-		}, 0, 5);
+		}, 0, 1);
 	}
 }
