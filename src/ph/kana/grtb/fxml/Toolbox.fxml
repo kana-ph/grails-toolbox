@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="850.0" stylesheets="@style.fxml.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rootAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="850.0" stylesheets="@style.fxml.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.kana.grtb.controller.ToolboxController">
    <children>
       <Accordion prefHeight="750.0" prefWidth="240.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0">
          <panes>
@@ -157,10 +157,10 @@
             </TitledPane>
          </panes>
       </Accordion>
-      <AnchorPane layoutX="240.0" layoutY="1.0" prefHeight="730.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+      <AnchorPane fx:id="consoleAnchorPane" layoutX="240.0" layoutY="1.0" prefHeight="730.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
          <children>
             <ProgressBar layoutX="182.0" layoutY="574.0" prefHeight="26.0" prefWidth="577.0" progress="0.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="3.0" />
-            <Button fx:id="collapseButton" layoutX="14.0" layoutY="643.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="26.0" text="«" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" />
+            <Button fx:id="collapseButton" layoutX="14.0" layoutY="643.0" mnemonicParsing="false" onAction="#toggleToolbox" prefHeight="20.0" prefWidth="26.0" text="«" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" />
          </children>
       </AnchorPane>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
