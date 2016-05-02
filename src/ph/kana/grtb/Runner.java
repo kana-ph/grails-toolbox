@@ -6,6 +6,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import ph.kana.grtb.ui.GrailsToolboxFrame;
 
+@Deprecated
 public class Runner {
 
 	public static void main(String[] args) {
