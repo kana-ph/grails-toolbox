@@ -3,12 +3,12 @@ package ph.kana.grtb.utils;
 import ph.kana.grtb.exception.GrailsProcessException;
 import ph.kana.grtb.process.GrailsProcess;
 
+import java.io.File;
 import java.io.InputStream;
 
 public class GrailsProcessHolder {
 
 	static private GrailsProcessHolder instance = null;
-
 	static public GrailsProcessHolder getInstance() {
 		if (null == instance) {
 			instance = new GrailsProcessHolder();
@@ -18,10 +18,12 @@ public class GrailsProcessHolder {
 
 	private GrailsProcessHolder() { }
 
+	private File projectDirectory;
 	private GrailsProcess grailsProcess;
 
 	public InputStream execute(GrailsProcess grailsProcess) {
 		setGrailsProcess(grailsProcess);
+		grailsProcess.setProjectDirectory(projectDirectory);
 		grailsProcess.execute();
 
 		return grailsProcess.getInputStream();
@@ -33,5 +35,9 @@ public class GrailsProcessHolder {
 		} else {
 			throw new GrailsProcessException(String.format("Grails command in progress: '%s'", grailsProcess.getCommand()));
 		}
+	}
+
+	public void setProjectDirectory(File projectDirectory) {
+		this.projectDirectory = projectDirectory;
 	}
 }

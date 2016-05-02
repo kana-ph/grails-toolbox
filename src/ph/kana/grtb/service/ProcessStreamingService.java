@@ -1,5 +1,6 @@
 package ph.kana.grtb.service;
 
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.scene.control.TextArea;
 import ph.kana.grtb.exception.GrailsProcessException;
@@ -17,7 +18,7 @@ public class ProcessStreamingService {
 		Task bgTask = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
-				bufferStreamToTextArea(inputStream, textArea);
+				streamBufferedToTextArea(inputStream, textArea);
 				return null;
 			}
 		};
@@ -26,12 +27,15 @@ public class ProcessStreamingService {
 		thread.start();
 	}
 
-	private void bufferStreamToTextArea(InputStream inputStream, TextArea textArea) {
+	private void streamBufferedToTextArea(InputStream inputStream, TextArea textArea) {
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
 			String line = reader.readLine();
 			while (null != line) {
-				textArea.appendText(line);
-				textArea.appendText("\n");
+				final String readLine = line;
+				Platform.runLater(() -> {
+					textArea.appendText(readLine);
+					textArea.appendText("\n");
+				});
 				line = reader.readLine();
 			}
 		} catch (IOException e) {

@@ -6,6 +6,7 @@ import ph.kana.grtb.process.GrailsProcess;
 import ph.kana.grtb.process.VersionGrailsProcess;
 import ph.kana.grtb.utils.GrailsProcessHolder;
 
+import java.io.File;
 import java.io.InputStream;
 
 public class GrailsService {
@@ -19,5 +20,9 @@ public class GrailsService {
 		} catch (GrailsProcessException e) {
 			return null;
 		}
+	}
+
+	public void setProjectDirectory(File projectDirectory) {
+		processHolder.setProjectDirectory(projectDirectory);
 	}
 }
