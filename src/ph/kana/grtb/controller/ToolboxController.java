@@ -2,7 +2,9 @@ package ph.kana.grtb.controller;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
@@ -42,7 +44,10 @@ public class ToolboxController {
 		InputStream inputStream = grailsService.checkInstallation();
 		initializeGrailsProject();
 		if (null == inputStream) {
-			// TODO say something nice.
+			Platform.runLater(() -> {
+				alertError("Grails is not installed!");
+				Platform.exit();
+			});
 		} else {
 			processStreamingService.streamToTextArea(inputStream, consoleTextArea);
 		}
@@ -95,5 +100,10 @@ public class ToolboxController {
 		} else {
 			openProject();
 		}
+	}
+
+	private void alertError(String message) {
+		Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
+		alert.showAndWait();
 	}
 }
