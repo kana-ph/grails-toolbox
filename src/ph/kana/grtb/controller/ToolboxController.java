@@ -26,7 +26,11 @@ public class ToolboxController {
 	@FXML
 	public void initialize() {
 		InputStream inputStream = grailsService.checkInstallation();
-		streamToTextArea(inputStream, consoleTextArea);
+		if (null == inputStream) {
+			// TODO say something nice.
+		} else {
+			streamToTextArea(inputStream, consoleTextArea);
+		}
 	}
 
 	@FXML

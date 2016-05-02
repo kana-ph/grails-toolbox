@@ -1,5 +1,6 @@
 package ph.kana.grtb.service;
 
+import ph.kana.grtb.exception.GrailsProcessException;
 import ph.kana.grtb.process.VersionGrailsProcess;
 import ph.kana.grtb.utils.GrailsProcessHolder;
 
@@ -10,7 +11,11 @@ public class GrailsService {
 	private final GrailsProcessHolder processHolder = GrailsProcessHolder.getInstance();
 
 	public InputStream checkInstallation() {
-		InputStream inputStream = processHolder.execute(new VersionGrailsProcess());
-		return inputStream;
+		try {
+			InputStream inputStream = processHolder.execute(new VersionGrailsProcess());
+			return inputStream;
+		} catch (GrailsProcessException e) {
+			return null;
+		}
 	}
 }
