@@ -59,7 +59,6 @@ public class ToolboxController {
 		}, 0, 1);
 	}
 
-	//TODO move this
 	private void streamToTextArea(InputStream inputStream, TextArea textArea) {
 		textArea.setText("");
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
