@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import ph.kana.grtb.service.GrailsService;
+import ph.kana.grtb.service.ProcessStreamingService;
 
 import java.io.*;
 import java.util.Timer;
@@ -16,6 +17,7 @@ public class ToolboxController {
 	static private final double EXPANDED_CONSOLE_LEFT_ANCHOR = 2.0;
 
 	GrailsService grailsService = new GrailsService();
+	ProcessStreamingService processStreamingService = new ProcessStreamingService();
 
 	@FXML
 	private Button collapseButton;
@@ -32,7 +34,7 @@ public class ToolboxController {
 		if (null == inputStream) {
 			// TODO say something nice.
 		} else {
-			streamToTextArea(inputStream, consoleTextArea);
+			processStreamingService.streamToTextArea(inputStream, consoleTextArea);
 		}
 	}
 
@@ -57,17 +59,5 @@ public class ToolboxController {
 				}
 			}
 		}, 0, 1);
-	}
-
-	private void streamToTextArea(InputStream inputStream, TextArea textArea) {
-		textArea.setText("");
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-			String line = reader.readLine();
-			while (null != line) {
-				textArea.appendText(line);
-				textArea.appendText("\n");
-				line = reader.readLine();
-			}
-		} catch (IOException e) { }
 	}
 }

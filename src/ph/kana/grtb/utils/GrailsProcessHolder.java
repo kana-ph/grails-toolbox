@@ -27,10 +27,6 @@ public class GrailsProcessHolder {
 		return grailsProcess.getInputStream();
 	}
 
-	public InputStream backgroundExecute(GrailsProcess grailsProcess) {
-		return null;
-	}
-
 	private void setGrailsProcess(GrailsProcess grailsProcess) {
 		if (null == this.grailsProcess || !this.grailsProcess.isAlive()) {
 			this.grailsProcess = grailsProcess;
