@@ -12,6 +12,9 @@ import java.util.TimerTask;
 
 public class ToolboxController {
 
+	static private final double DEFAULT_CONSOLE_LEFT_ANCHOR = 240.0;
+	static private final double EXPANDED_CONSOLE_LEFT_ANCHOR = 2.0;
+
 	GrailsService grailsService = new GrailsService();
 
 	@FXML
@@ -35,7 +38,6 @@ public class ToolboxController {
 
 	@FXML
 	public void toggleToolbox() {
-		double DEFAULT_CONSOLE_LEFT_ANCHOR = 240.0;
 		boolean expanding = DEFAULT_CONSOLE_LEFT_ANCHOR == rootAnchorPane.getLeftAnchor(consoleAnchorPane);
 
 		collapseButton.setText(expanding? "\u00bb" : "\u00ab");
@@ -45,7 +47,7 @@ public class ToolboxController {
 			@Override
 			public void run() {
 				double increment = expanding? -1.0 : 1.0;
-				double finalAnchor = expanding? 2.0 : DEFAULT_CONSOLE_LEFT_ANCHOR;
+				double finalAnchor = expanding? EXPANDED_CONSOLE_LEFT_ANCHOR : DEFAULT_CONSOLE_LEFT_ANCHOR;
 
 				double currentAnchor = rootAnchorPane.getLeftAnchor(consoleAnchorPane);
 				if ((expanding && (currentAnchor > finalAnchor)) || (!expanding && currentAnchor < finalAnchor)) {
