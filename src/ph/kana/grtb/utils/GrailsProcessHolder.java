@@ -4,6 +4,7 @@ import ph.kana.grtb.exception.GrailsProcessException;
 import ph.kana.grtb.process.GrailsProcess;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class GrailsProcessHolder {
@@ -38,6 +39,20 @@ public class GrailsProcessHolder {
 	}
 
 	public void setProjectDirectory(File projectDirectory) {
-		this.projectDirectory = projectDirectory;
+		try {
+			this.projectDirectory = projectDirectory;
+			IoUtils.saveCurrentProject(projectDirectory);
+		} catch (IOException e) { }
+	}
+
+	public File getProjectDirectory() {
+		if (projectDirectory == null) {
+			try {
+				projectDirectory = IoUtils.fetchPreviousProject();
+			} catch (IOException e) {
+				return null;
+			}
+		}
+		return projectDirectory;
 	}
 }

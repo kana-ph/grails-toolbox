@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import ph.kana.grtb.service.GrailsService;
 import ph.kana.grtb.service.ProcessStreamingService;
@@ -41,6 +40,7 @@ public class ToolboxController {
 	@FXML
 	public void initialize() {
 		InputStream inputStream = grailsService.checkInstallation();
+		initializeGrailsProject();
 		if (null == inputStream) {
 			// TODO say something nice.
 		} else {
@@ -80,8 +80,20 @@ public class ToolboxController {
 
 		if (directory != null) {
 			grailsService.setProjectDirectory(directory);
+			window.setTitle(String.format("Grails Toolbox [%s]", directory.getAbsolutePath()));
 		} else {
 			Platform.exit();
+		}
+	}
+
+	private void initializeGrailsProject() {
+		File projectDirectory = grailsService.getProjectDirectory();
+		if (projectDirectory != null) {
+			Platform.runLater(() ->
+				window.setTitle(String.format("Grails Toolbox [%s]", projectDirectory.getAbsolutePath()))
+			);
+		} else {
+			openProject();
 		}
 	}
 }

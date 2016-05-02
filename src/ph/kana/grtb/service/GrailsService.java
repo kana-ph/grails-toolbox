@@ -25,4 +25,8 @@ public class GrailsService {
 	public void setProjectDirectory(File projectDirectory) {
 		processHolder.setProjectDirectory(projectDirectory);
 	}
+
+	public File getProjectDirectory() {
+		return processHolder.getProjectDirectory();
+	}
 }
