@@ -39,24 +39,13 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" styleClass="toolbox-menu" GridPane.rowIndex="1">
                            <children>
-                              <Button mnemonicParsing="false" text="Run App">
+                              <Button mnemonicParsing="false" onAction="#runAppButtonClick" text="Run App">
                                  <styleClass>
                                     <String fx:value="toolbox-item" />
                                     <String fx:value="large-button" />
                                  </styleClass>
                               </Button>
-                              <ComboBox editable="false" prefWidth="150.0" styleClass="toolbox-item">
-                                 <items>
-                                    <FXCollections fx:factory="observableArrayList">
-                                       <String fx:value="as Grails Server" />
-                                       <String fx:value="as WAR" />
-                                       <String fx:value="in Grails Console" />
-                                    </FXCollections>
-                                 </items>
-                                 <value>
-                                    <String fx:value="as Grails Server" />
-                                 </value>
-                              </ComboBox>
+                              <ComboBox fx:id="runAppTypeComboBox" editable="false" prefWidth="150.0" styleClass="toolbox-item"/>
                               <ComboBox editable="true" prefWidth="150.0" promptText="Grails Environment" styleClass="toolbox-item" visibleRowCount="3">
                                  <VBox.margin>
                                     <Insets top="20.0" />

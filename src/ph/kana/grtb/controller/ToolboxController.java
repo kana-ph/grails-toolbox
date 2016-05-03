@@ -1,16 +1,15 @@
 package ph.kana.grtb.controller;
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import ph.kana.grtb.service.GrailsService;
 import ph.kana.grtb.service.ProcessStreamingService;
+import ph.kana.grtb.type.RunAppType;
 
 import java.io.*;
 import java.util.Timer;
@@ -29,6 +28,8 @@ public class ToolboxController {
 	@FXML
 	private Button collapseButton;
 	@FXML
+	private ComboBox<String> runAppTypeComboBox;
+	@FXML
 	private TextArea consoleTextArea;
 	@FXML
 	private AnchorPane rootAnchorPane;
@@ -42,7 +43,9 @@ public class ToolboxController {
 	@FXML
 	public void initialize() {
 		InputStream inputStream = grailsService.checkInstallation();
+
 		initializeGrailsProject();
+		initializeRunAppTypeComboBox();
 		if (null == inputStream) {
 			Platform.runLater(() -> {
 				alertError("Grails is not installed!");
@@ -91,6 +94,11 @@ public class ToolboxController {
 		}
 	}
 
+	@FXML
+	public void runAppButtonClick() {
+
+	}
+
 	private void initializeGrailsProject() {
 		File projectDirectory = grailsService.getProjectDirectory();
 		if (projectDirectory != null) {
@@ -100,6 +108,14 @@ public class ToolboxController {
 		} else {
 			openProject();
 		}
+	}
+
+	private void initializeRunAppTypeComboBox() {
+		Platform.runLater(() -> {
+			ObservableList<String> comboBoxItems = runAppTypeComboBox.getItems();
+			comboBoxItems.addAll(RunAppType.descriptions());
+			runAppTypeComboBox.setValue(RunAppType.SERVER.getDescription());
+		});
 	}
 
 	private void alertError(String message) {
