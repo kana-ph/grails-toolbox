@@ -1,5 +1,8 @@
 package ph.kana.grtb.process;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Deprecated
 public class CustomGrailsProcess extends GrailsProcess {
 
@@ -14,8 +17,8 @@ public class CustomGrailsProcess extends GrailsProcess {
 	}
 	
 	@Override
-	protected String[] getArgs() {
-		return customCommand.split(" ");
+	protected List<String> getArgs() {
+		return Arrays.asList(customCommand);
 	}
 	
 }

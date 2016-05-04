@@ -1,35 +1,44 @@
 package ph.kana.grtb.process;
 
+import ph.kana.grtb.type.RunAppType;
+
 import java.util.ArrayList;
 import java.util.List;
 
-@Deprecated
 public class RunAppGrailsProcess extends GrailsProcess {
+	private RunAppType type;
 	private String environment;
 
 	public void setEnvironment(String environment) {
 		this.environment = environment;
 	}
-	
-	public String getEnvironment() {
-		return environment;
+
+	public void setType(RunAppType type) {
+		this.type = type;
 	}
 	
 	@Override
-	protected String[] getArgs() {
-		if ("dev".equals(environment)) {
-			return new String[] {"run-app"};
-		} else {
-			List<String> args = new ArrayList();
-			
-			if ("prod".equals(environment) || "test".equals(environment)) {
-				args.add(environment);
-			} else {
-				args.add(String.format("-Dgrails.env=%s", environment));
-			}
-			
-			args.add("run-app");
-			return args.toArray(new String[args.size()]);
+	protected List<String> getArgs() {
+		List<String > args = new ArrayList<>();
+		args.add(buildEnvironmentString());
+		args.add(type.getCommand());
+
+		return args;
+	}
+
+	private String buildEnvironmentString() {
+		if (null == environment) {
+			return "";
+		}
+		switch (environment) {
+			case "":
+			case "dev":
+				return "";
+			case "prod":
+			case "test":
+				return environment;
+			default:
+				return String.format("-Dgrails.env=%s", environment);
 		}
 	}
 }

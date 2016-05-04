@@ -1,5 +1,8 @@
 package ph.kana.grtb.process;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Deprecated
 public class CleanGrailsProcess extends GrailsProcess {
 	private boolean cleanAllCommand;
@@ -13,11 +16,11 @@ public class CleanGrailsProcess extends GrailsProcess {
 	}
 
 	@Override
-	public String[] getArgs() {
+	public List<String> getArgs() {
 		if (isCleanAllCommand()) {
-			return new String[] {"clean-all"};
+			return Arrays.asList("clean-all");
 		} else {
-			return new String[] {"clean"};
+			return Arrays.asList("clean");
 		}
 	}
 }

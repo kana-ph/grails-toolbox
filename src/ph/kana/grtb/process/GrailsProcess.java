@@ -3,6 +3,7 @@ package ph.kana.grtb.process;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import ph.kana.grtb.exception.GrailsProcessException;
 import ph.kana.grtb.utils.Logger;
@@ -16,11 +17,11 @@ public abstract class GrailsProcess {
 	private boolean stacktraceMode;
 	private boolean verboseMode;
 
-	protected abstract String[] getArgs();
+	protected abstract List<String> getArgs();
 
 	public final String getCommand() {
 		return new StringBuilder("grails ")
-			.append(String.join(" ", getArgs()))
+			.append(String.join(" ", getArgs()).trim())
 			.append(stacktraceMode? " --stacktrace" : "")
 			.append(verboseMode? " --verbose" : "")
 			.toString();

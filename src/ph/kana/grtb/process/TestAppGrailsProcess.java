@@ -36,7 +36,7 @@ public class TestAppGrailsProcess extends GrailsProcess {
 	}
 
 	@Override
-	public String[] getArgs() {
+	public List<String> getArgs() {
 		List<String> args = new ArrayList<>();
 		
 		args.add("test-app");
@@ -49,6 +49,6 @@ public class TestAppGrailsProcess extends GrailsProcess {
 		List<String> classPatterns = Arrays.asList(getClassNamePattern());
 		args.addAll(classPatterns);
 		
-		return args.toArray(new String[args.size()]);
+		return args;
 	}
 }
