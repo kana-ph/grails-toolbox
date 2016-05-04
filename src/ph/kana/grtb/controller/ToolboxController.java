@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import ph.kana.grtb.process.GrailsProcess;
 import ph.kana.grtb.service.GrailsService;
 import ph.kana.grtb.service.ProcessStreamingService;
 import ph.kana.grtb.type.RunAppType;
@@ -29,8 +30,11 @@ public class ToolboxController {
 	@FXML private ComboBox<String> runAppTypeComboBox;
 	@FXML private ComboBox<String> runEnvironmentComboBox;
 	@FXML private TextArea consoleTextArea;
+	@FXML private Label progressBarLabel;
+	@FXML private ProgressBar processProgressBar;
 	@FXML private AnchorPane rootAnchorPane;
 	@FXML private AnchorPane consoleAnchorPane;
+	@FXML private AnchorPane killAppPane;
 
 	public void setWindow(Stage window) {
 		this.window = window;
@@ -86,19 +90,19 @@ public class ToolboxController {
 		RunAppType type = RunAppType.findByDescription(runAppTypeComboBox.getValue());
 		String environment = runEnvironmentComboBox.getValue();
 
-		InputStream inputStream = grailsService.runApp(type, environment);
-		processStreamingService.streamToTextArea(inputStream, consoleTextArea);
+		GrailsProcess grailsProcess = grailsService.runApp(type, environment);
+		startActiveProcessBehavior(grailsProcess);
 	}
 
 	private void checkGrailsInstallation() {
-		InputStream inputStream = grailsService.checkInstallation();
-		if (null == inputStream) {
+		GrailsProcess grailsProcess = grailsService.checkInstallation();
+		if (null == grailsProcess) {
 			Platform.runLater(() -> {
 				alertError("Grails is not installed!");
 				Platform.exit();
 			});
 		} else {
-			processStreamingService.streamToTextArea(inputStream, consoleTextArea);
+			processStreamingService.streamToTextArea(grailsProcess, consoleTextArea);
 		}
 	}
 
@@ -119,6 +123,20 @@ public class ToolboxController {
 			comboBoxItems.addAll(RunAppType.descriptions());
 			runAppTypeComboBox.setValue(RunAppType.SERVER.getDescription());
 		});
+	}
+
+	private void startActiveProcessBehavior(GrailsProcess grailsProcess) {
+		processStreamingService.streamToTextArea(grailsProcess, consoleTextArea, this::startInactiveProcessBehavior);
+
+		progressBarLabel.setText(grailsProcess.getCommand());
+		processProgressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+		killAppPane.setVisible(true);
+	}
+
+	private void startInactiveProcessBehavior(GrailsProcess grailsProcess) {
+		progressBarLabel.setText("");
+		processProgressBar.setProgress(0.0);
+		killAppPane.setVisible(false);
 	}
 
 	private void alertError(String message) {

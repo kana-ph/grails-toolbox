@@ -30,13 +30,11 @@ public class GrailsProcessHolder {
 		return grailsProcess.getInputStream();
 	}
 
-	private void setGrailsProcess(GrailsProcess grailsProcess) {
-		if (null == this.grailsProcess || !this.grailsProcess.isAlive()) {
-			this.grailsProcess = grailsProcess;
-		} else {
-			throw new GrailsProcessException(String.format("Grails command in progress: '%s'", grailsProcess.getCommand()));
-		}
+	public void endCurrentProcess() {
+		grailsProcess.stop();
+		grailsProcess = null;
 	}
+
 
 	public void setProjectDirectory(File projectDirectory) {
 		try {
@@ -54,5 +52,13 @@ public class GrailsProcessHolder {
 			}
 		}
 		return projectDirectory;
+	}
+
+	private void setGrailsProcess(GrailsProcess grailsProcess) {
+		if (null == this.grailsProcess || !this.grailsProcess.isAlive()) {
+			this.grailsProcess = grailsProcess;
+		} else {
+			throw new GrailsProcessException(String.format("Grails command in progress: '%s'", grailsProcess.getCommand()));
+		}
 	}
 }

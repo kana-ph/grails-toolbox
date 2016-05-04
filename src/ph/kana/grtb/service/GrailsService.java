@@ -12,30 +12,34 @@ import java.io.InputStream;
 
 public class GrailsService {
 
-	private final GrailsProcessHolder processHolder = GrailsProcessHolder.getInstance();
+	private final GrailsProcessHolder grailsProcessHolder = GrailsProcessHolder.getInstance();
 
-	public InputStream checkInstallation() {
-		return execute(new VersionGrailsProcess());
+	public GrailsProcess checkInstallation() {
+		GrailsProcess grailsProcess = new VersionGrailsProcess();
+		InputStream inputStream = execute(grailsProcess);
+		return inputStream == null? null : grailsProcess;
 	}
 
-	public InputStream runApp(RunAppType type, String environment) {
+	public GrailsProcess runApp(RunAppType type, String environment) {
 		RunAppGrailsProcess runAppProcess = new RunAppGrailsProcess();
 		runAppProcess.setType(type);
 		runAppProcess.setEnvironment(environment);
-		return execute(runAppProcess);
+		execute(runAppProcess);
+
+		return runAppProcess;
 	}
 
 	public void setProjectDirectory(File projectDirectory) {
-		processHolder.setProjectDirectory(projectDirectory);
+		grailsProcessHolder.setProjectDirectory(projectDirectory);
 	}
 
 	public File getProjectDirectory() {
-		return processHolder.getProjectDirectory();
+		return grailsProcessHolder.getProjectDirectory();
 	}
 
 	private InputStream execute(GrailsProcess process) {
 		try {
-			InputStream inputStream = processHolder.execute(process);
+			InputStream inputStream = grailsProcessHolder.execute(process);
 			return inputStream;
 		} catch (GrailsProcessException e) {
 			return null;

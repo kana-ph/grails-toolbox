@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -20,6 +21,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="rootAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="850.0" stylesheets="@style.fxml.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.kana.grtb.controller.ToolboxController">
@@ -35,9 +37,10 @@
                      <rowConstraints>
                         <RowConstraints />
                         <RowConstraints />
+                        <RowConstraints />
                      </rowConstraints>
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="toolbox-menu" GridPane.rowIndex="1">
+                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="toolbox-menu" GridPane.rowIndex="2">
                            <children>
                               <Button mnemonicParsing="false" onAction="#runAppButtonClick" text="Run App">
                                  <styleClass>
@@ -148,9 +151,24 @@
             </TitledPane>
          </panes>
       </Accordion>
+      <AnchorPane fx:id="killAppPane" prefHeight="750.0" prefWidth="240.0" styleClass="dark-overlay" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0">
+         <children>
+            <Button layoutX="23.0" layoutY="322.0" mnemonicParsing="false" text="Kill App" AnchorPane.bottomAnchor="321.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="322.0">
+               <styleClass>
+                  <String fx:value="large-button" />
+                  <String fx:value="toolbox-item" />
+               </styleClass>
+            </Button>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="consoleAnchorPane" layoutX="240.0" layoutY="1.0" prefHeight="730.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
          <children>
-            <ProgressBar layoutX="182.0" layoutY="574.0" prefHeight="26.0" prefWidth="577.0" progress="0.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="3.0" />
+            <StackPane layoutX="30.0" layoutY="674.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="3.0">
+               <children>
+                  <ProgressBar fx:id="processProgressBar" prefHeight="26.0" prefWidth="577.0" progress="0.0" />
+                  <Label fx:id="progressBarLabel" />
+               </children>
+            </StackPane>
             <Button fx:id="collapseButton" layoutX="14.0" layoutY="643.0" mnemonicParsing="false" onAction="#toggleToolbox" prefHeight="20.0" prefWidth="26.0" text="«" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" />
             <TextArea fx:id="consoleTextArea" editable="false" layoutX="3.0" layoutY="6.0" prefHeight="200.0" prefWidth="200.0" styleClass="console" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
          </children>
