@@ -25,16 +25,12 @@ public class ToolboxController {
 
 	private Stage window;
 
-	@FXML
-	private Button collapseButton;
-	@FXML
-	private ComboBox<String> runAppTypeComboBox;
-	@FXML
-	private TextArea consoleTextArea;
-	@FXML
-	private AnchorPane rootAnchorPane;
-	@FXML
-	private AnchorPane consoleAnchorPane;
+	@FXML private Button collapseButton;
+	@FXML private ComboBox<String> runAppTypeComboBox;
+	@FXML private ComboBox<String> runEnvironmentComboBox;
+	@FXML private TextArea consoleTextArea;
+	@FXML private AnchorPane rootAnchorPane;
+	@FXML private AnchorPane consoleAnchorPane;
 
 	public void setWindow(Stage window) {
 		this.window = window;
@@ -42,18 +38,9 @@ public class ToolboxController {
 
 	@FXML
 	public void initialize() {
-		InputStream inputStream = grailsService.checkInstallation();
-
+		checkGrailsInstallation();
 		initializeGrailsProject();
 		initializeRunAppTypeComboBox();
-		if (null == inputStream) {
-			Platform.runLater(() -> {
-				alertError("Grails is not installed!");
-				Platform.exit();
-			});
-		} else {
-			processStreamingService.streamToTextArea(inputStream, consoleTextArea);
-		}
 	}
 
 	@FXML
@@ -96,7 +83,23 @@ public class ToolboxController {
 
 	@FXML
 	public void runAppButtonClick() {
+		RunAppType type = RunAppType.findByDescription(runAppTypeComboBox.getValue());
+		String environment = runEnvironmentComboBox.getValue();
 
+		InputStream inputStream = grailsService.runApp(type, environment);
+		processStreamingService.streamToTextArea(inputStream, consoleTextArea);
+	}
+
+	private void checkGrailsInstallation() {
+		InputStream inputStream = grailsService.checkInstallation();
+		if (null == inputStream) {
+			Platform.runLater(() -> {
+				alertError("Grails is not installed!");
+				Platform.exit();
+			});
+		} else {
+			processStreamingService.streamToTextArea(inputStream, consoleTextArea);
+		}
 	}
 
 	private void initializeGrailsProject() {

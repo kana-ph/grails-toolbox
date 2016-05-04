@@ -45,8 +45,8 @@
                                     <String fx:value="large-button" />
                                  </styleClass>
                               </Button>
-                              <ComboBox fx:id="runAppTypeComboBox" editable="false" prefWidth="150.0" styleClass="toolbox-item"/>
-                              <ComboBox editable="true" prefWidth="150.0" promptText="Grails Environment" styleClass="toolbox-item" visibleRowCount="3">
+                              <ComboBox fx:id="runAppTypeComboBox" editable="false" prefWidth="150.0" styleClass="toolbox-item" />
+                              <ComboBox fx:id="runEnvironmentComboBox" editable="true" prefWidth="150.0" promptText="Grails Environment" styleClass="toolbox-item" visibleRowCount="3">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
