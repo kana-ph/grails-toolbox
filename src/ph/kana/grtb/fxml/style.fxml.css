@@ -1,3 +1,14 @@
+.command-header {
+    -fx-font-weight: bold;
+    -fx-text-fill: #00001a;
+}
+
+.command-string {
+    -fx-font: 11px 'monospace';
+    -fx-text-fill: #00001a;
+    -fx-background-color: #f2f2f2
+}
+
 .console {
     -fx-font: 12px 'monospace';
     -fx-highlight-text-fill: #f5f5dc;
@@ -10,6 +21,10 @@
 
 .dark-overlay {
     -fx-background-color: rgba(0, 0, 0, 0.75);
+}
+
+.kill-app-control {
+    -fx-background-color: #f2f2f2
 }
 
 .toolbox-menu {

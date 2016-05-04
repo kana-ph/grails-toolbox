@@ -30,7 +30,7 @@ public class ToolboxController {
 	@FXML private ComboBox<String> runAppTypeComboBox;
 	@FXML private ComboBox<String> runEnvironmentComboBox;
 	@FXML private TextArea consoleTextArea;
-	@FXML private Label progressBarLabel;
+	@FXML private TextField commandStringTextField;
 	@FXML private ProgressBar processProgressBar;
 	@FXML private AnchorPane rootAnchorPane;
 	@FXML private AnchorPane consoleAnchorPane;
@@ -128,13 +128,13 @@ public class ToolboxController {
 	private void startActiveProcessBehavior(GrailsProcess grailsProcess) {
 		processStreamingService.streamToTextArea(grailsProcess, consoleTextArea, this::startInactiveProcessBehavior);
 
-		progressBarLabel.setText(grailsProcess.getCommand());
+		commandStringTextField.setText(grailsProcess.getCommand().substring(7));
 		processProgressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
 		killAppPane.setVisible(true);
 	}
 
 	private void startInactiveProcessBehavior(GrailsProcess grailsProcess) {
-		progressBarLabel.setText("");
+		commandStringTextField.setText("");
 		processProgressBar.setProgress(0.0);
 		killAppPane.setVisible(false);
 	}
