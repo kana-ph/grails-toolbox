@@ -154,14 +154,14 @@
          <children>
             <AnchorPane layoutX="5.0" layoutY="232.0" prefHeight="200.0" prefWidth="200.0" styleClass="kill-app-control" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="250.0">
                <children>
-                  <Button layoutX="-11.0" layoutY="16.0" mnemonicParsing="false" text="Kill Process" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                  <Button layoutX="-11.0" layoutY="16.0" mnemonicParsing="false" text="Kill Process" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
                      <styleClass>
                         <String fx:value="large-button" />
                         <String fx:value="toolbox-item" />
                      </styleClass>
                   </Button>
-                  <Label layoutX="-21.0" layoutY="87.0" styleClass="command-header" text="Current Process:" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="80.0" />
-                  <TextField fx:id="commandStringTextField" editable="false" layoutY="135.0" styleClass="command-string" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0" />
+                  <Label layoutX="-21.0" layoutY="87.0" styleClass="command-header" text="Current Process:" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="10.0" />
+                  <TextField fx:id="commandStringTextField" editable="false" layoutY="135.0" styleClass="command-string" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
                </children>
             </AnchorPane>
          </children>
