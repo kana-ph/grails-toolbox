@@ -1,10 +1,7 @@
 package ph.kana.grtb.service;
 
 import ph.kana.grtb.exception.GrailsProcessException;
-import ph.kana.grtb.process.CompileGrailsProcess;
-import ph.kana.grtb.process.GrailsProcess;
-import ph.kana.grtb.process.RunAppGrailsProcess;
-import ph.kana.grtb.process.VersionGrailsProcess;
+import ph.kana.grtb.process.*;
 import ph.kana.grtb.type.RunAppType;
 import ph.kana.grtb.utils.GrailsProcessHolder;
 
@@ -16,15 +13,17 @@ public class GrailsService {
 	private final GrailsProcessHolder grailsProcessHolder = GrailsProcessHolder.getInstance();
 
 	public GrailsProcess checkInstallation() {
-		GrailsProcess grailsProcess = new VersionGrailsProcess();
+		GrailsProcess grailsProcess = new GenericGrailsProcess("--version");
 		InputStream inputStream = execute(grailsProcess);
 		return inputStream == null? null : grailsProcess;
 	}
 
 	public GrailsProcess compile() {
-		CompileGrailsProcess compileGrailsProcess = new CompileGrailsProcess();
-		execute(compileGrailsProcess);
-		return compileGrailsProcess;
+		return runSimpleCommands("compile");
+	}
+
+	public GrailsProcess clean() {
+		return runSimpleCommands("clean");
 	}
 
 	public GrailsProcess runApp(RunAppType type, String environment) {
@@ -55,5 +54,11 @@ public class GrailsService {
 		} catch (GrailsProcessException e) {
 			return null;
 		}
+	}
+
+	private GrailsProcess runSimpleCommands(String command) {
+		GrailsProcess grailsProcess = new GenericGrailsProcess(command);
+		execute(grailsProcess);
+		return grailsProcess;
 	}
 }
