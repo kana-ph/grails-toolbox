@@ -150,7 +150,7 @@
             </TitledPane>
          </panes>
       </Accordion>
-      <AnchorPane fx:id="killAppPane" prefHeight="750.0" prefWidth="240.0" styleClass="dark-overlay" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0">
+      <AnchorPane fx:id="killAppPane" prefHeight="750.0" prefWidth="240.0" styleClass="dark-overlay" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0">
          <children>
             <AnchorPane layoutX="5.0" layoutY="232.0" prefHeight="200.0" prefWidth="200.0" styleClass="kill-app-control" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="250.0">
                <children>
