@@ -20,7 +20,7 @@ public abstract class GrailsProcess {
 	protected abstract List<String> getArgs();
 
 	public final String getCommand() {
-		return new StringBuilder("grails ")
+		return new StringBuilder()
 			.append(String.join(" ", getArgs()).trim())
 			.append(stacktraceMode? " --stacktrace" : "")
 			.append(verboseMode? " --verbose" : "")
@@ -31,7 +31,8 @@ public abstract class GrailsProcess {
 		String command = getCommand();
 		logger.info("Running command '%s'", command);
 		try {
-			process = Runtime.getRuntime().exec(command, null, getProjectDirectory());
+			Runtime runtime = Runtime.getRuntime();
+			process = runtime.exec(String.format("grails %s", command), null, getProjectDirectory());
 		} catch (IOException e) {
 			throw new GrailsProcessException("Exception on starting process", e);
 		}
@@ -67,4 +68,9 @@ public abstract class GrailsProcess {
 	}
 
 	public boolean isAlive() { return process.isAlive(); }
+
+	@Override
+	public String toString() {
+		return getCommand();
+	}
 }

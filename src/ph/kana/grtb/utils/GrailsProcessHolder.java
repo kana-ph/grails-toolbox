@@ -32,9 +32,7 @@ public class GrailsProcessHolder {
 
 	public void endCurrentProcess() {
 		grailsProcess.stop();
-		grailsProcess = null;
 	}
-
 
 	public void setProjectDirectory(File projectDirectory) {
 		try {

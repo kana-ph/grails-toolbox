@@ -25,11 +25,12 @@ public class ToolboxController {
 	static private final double DEFAULT_CONSOLE_LEFT_ANCHOR = 240.0;
 	static private final double EXPANDED_CONSOLE_LEFT_ANCHOR = 2.0;
 
-	private GrailsService grailsService = new GrailsService();
+	private final GrailsService grailsService = new GrailsService();
 
 	private Stage window;
 
 	@FXML private Button collapseButton;
+	@FXML private Button killProcessButton;
 	@FXML private ComboBox<String> runAppTypeComboBox;
 	@FXML private ComboBox<String> runEnvironmentComboBox;
 	@FXML private TextArea consoleTextArea;
@@ -99,6 +100,13 @@ public class ToolboxController {
 		startActiveProcessBehavior(grailsProcess);
 	}
 
+	@FXML
+	public void killProcessButtonClick() {
+		killProcessButton.disableProperty().setValue(true);
+		grailsService.endCurrentProcess();
+		killProcessButton.disableProperty().setValue(false);
+	}
+
 	private void checkGrailsInstallation() {
 		GrailsProcess grailsProcess = grailsService.checkInstallation();
 		if (null == grailsProcess) {
@@ -133,12 +141,12 @@ public class ToolboxController {
 	private void startActiveProcessBehavior(GrailsProcess grailsProcess) {
 		streamToTextArea(grailsProcess, consoleTextArea);
 
-		commandStringTextField.setText(grailsProcess.getCommand().substring(7));
+		commandStringTextField.setText(grailsProcess.getCommand());
 		processProgressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
 		killAppPane.setVisible(true);
 	}
 
-	private void startInactiveProcessBehavior(GrailsProcess grailsProcess) {
+	private void startInactiveProcessBehavior() {
 		commandStringTextField.setText("");
 		processProgressBar.setProgress(0.0);
 		killAppPane.setVisible(false);
@@ -179,7 +187,7 @@ public class ToolboxController {
 
 		EventHandler<Event> endProcessEventHandler = event -> {
 			grailsService.endCurrentProcess();
-			startInactiveProcessBehavior(grailsProcess);
+			startInactiveProcessBehavior();
 			event.consume();
 		};
 		bgTask.setOnSucceeded(endProcessEventHandler);
