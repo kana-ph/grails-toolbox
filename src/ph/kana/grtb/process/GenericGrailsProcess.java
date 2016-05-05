@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Deprecated
-public class CustomGrailsProcess extends GrailsProcess {
+public class GenericGrailsProcess extends GrailsProcess {
 
 	private String customCommand;
 
