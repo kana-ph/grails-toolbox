@@ -127,7 +127,7 @@
                                  </styleClass>
                               </Button>
                               <Separator prefWidth="200.0" />
-                              <Button mnemonicParsing="false" text="Clean">
+                              <Button mnemonicParsing="false" onAction="#cleanButtonClick" text="Clean">
                                  <styleClass>
                                     <String fx:value="toolbox-item" />
                                     <String fx:value="med-button" />

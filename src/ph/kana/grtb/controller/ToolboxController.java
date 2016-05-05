@@ -113,6 +113,12 @@ public class ToolboxController {
 		startActiveProcessBehavior(grailsProcess);
 	}
 
+	@FXML
+	public void cleanButtonClick() {
+		GrailsProcess grailsProcess = grailsService.clean();
+		startActiveProcessBehavior(grailsProcess);
+	}
+
 	private void checkGrailsInstallation() {
 		GrailsProcess grailsProcess = grailsService.checkInstallation();
 		if (null == grailsProcess) {
