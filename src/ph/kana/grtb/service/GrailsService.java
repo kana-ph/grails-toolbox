@@ -29,6 +29,10 @@ public class GrailsService {
 		return runAppProcess;
 	}
 
+	public void endCurrentProcess() {
+		grailsProcessHolder.endCurrentProcess();
+	}
+
 	public void setProjectDirectory(File projectDirectory) {
 		grailsProcessHolder.setProjectDirectory(projectDirectory);
 	}

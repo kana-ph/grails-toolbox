@@ -2,19 +2,23 @@ package ph.kana.grtb.controller;
 
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import ph.kana.grtb.exception.GrailsProcessException;
 import ph.kana.grtb.process.GrailsProcess;
 import ph.kana.grtb.service.GrailsService;
-import ph.kana.grtb.service.ProcessStreamingService;
 import ph.kana.grtb.type.RunAppType;
 
 import java.io.*;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.function.Consumer;
 
 public class ToolboxController {
 
@@ -22,7 +26,6 @@ public class ToolboxController {
 	static private final double EXPANDED_CONSOLE_LEFT_ANCHOR = 2.0;
 
 	private GrailsService grailsService = new GrailsService();
-	private ProcessStreamingService processStreamingService = new ProcessStreamingService();
 
 	private Stage window;
 
@@ -104,7 +107,7 @@ public class ToolboxController {
 				Platform.exit();
 			});
 		} else {
-			processStreamingService.streamToTextArea(grailsProcess, consoleTextArea);
+			streamToTextArea(grailsProcess, consoleTextArea);
 		}
 	}
 
@@ -128,7 +131,7 @@ public class ToolboxController {
 	}
 
 	private void startActiveProcessBehavior(GrailsProcess grailsProcess) {
-		processStreamingService.streamToTextArea(grailsProcess, consoleTextArea, this::startInactiveProcessBehavior);
+		streamToTextArea(grailsProcess, consoleTextArea);
 
 		commandStringTextField.setText(grailsProcess.getCommand().substring(7));
 		processProgressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
@@ -144,5 +147,43 @@ public class ToolboxController {
 	private void alertError(String message) {
 		Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
 		alert.showAndWait();
+	}
+
+	private void streamToTextArea(GrailsProcess grailsProcess, TextArea textArea) {
+		Task bgTask = new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				InputStream inputStream = grailsProcess.getInputStream();
+				StringBuilder consoleContent = new StringBuilder();
+
+				try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+					String line = reader.readLine();
+					while (null != line) {
+						consoleContent
+							.append(line)
+							.append("\n");
+						updateMessage(consoleContent.toString());
+						line = reader.readLine();
+					}
+				} catch (IOException e) {
+					throw new GrailsProcessException("Error streaming grails process.", e);
+				}
+				return null;
+			}
+		};
+		textArea.textProperty()
+			.bind(bgTask.messageProperty());
+		Thread thread = new Thread(bgTask, "process-streaming-bg-task");
+		thread.setDaemon(true);
+		thread.start();
+
+		EventHandler<Event> endProcessEventHandler = event -> {
+			grailsService.endCurrentProcess();
+			startInactiveProcessBehavior(grailsProcess);
+			event.consume();
+		};
+		bgTask.setOnSucceeded(endProcessEventHandler);
+		bgTask.setOnCancelled(endProcessEventHandler);
+		bgTask.setOnFailed(endProcessEventHandler);
 	}
 }
