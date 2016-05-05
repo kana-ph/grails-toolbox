@@ -82,15 +82,15 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" styleClass="toolbox-menu" GridPane.rowIndex="1">
                            <children>
-                              <Button mnemonicParsing="false" text="Test App">
+                              <Button mnemonicParsing="false" onAction="#testAppButtonClick" text="Test App">
                                  <styleClass>
                                     <String fx:value="toolbox-item" />
                                     <String fx:value="large-button" />
                                  </styleClass>
                               </Button>
-                              <CheckBox mnemonicParsing="false" selected="true" styleClass="toolbox-item" text="Unit Test" />
-                              <CheckBox mnemonicParsing="false" styleClass="toolbox-item" text="Integration Test" />
-                              <TextField promptText="Test Class Pattern" styleClass="toolbox-item">
+                              <CheckBox fx:id="includeUnitTestCheckbox" mnemonicParsing="false" selected="true" styleClass="toolbox-item" text="Unit Test" />
+                              <CheckBox fx:id="includeIntegrationTestCheckbox" mnemonicParsing="false" styleClass="toolbox-item" text="Integration Test" />
+                              <TextField fx:id="testClassPatternTextField" onKeyPressed="#testClassPatternKeyPress" promptText="Test Class Pattern" styleClass="toolbox-item">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -107,7 +107,7 @@
                   </GridPane>
                </content>
             </TitledPane>
-            <TitledPane fx:id="compilePane" text="Compile / Clean">
+            <TitledPane fx:id="compilePane" text="Compilation">
                <content>
                   <GridPane alignment="CENTER" gridLinesVisible="true">
                      <columnConstraints>
@@ -128,12 +128,6 @@
                               </Button>
                               <Separator prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#cleanButtonClick" text="Clean">
-                                 <styleClass>
-                                    <String fx:value="toolbox-item" />
-                                    <String fx:value="med-button" />
-                                 </styleClass>
-                              </Button>
-                              <Button mnemonicParsing="false" text="Clean All">
                                  <styleClass>
                                     <String fx:value="toolbox-item" />
                                     <String fx:value="med-button" />

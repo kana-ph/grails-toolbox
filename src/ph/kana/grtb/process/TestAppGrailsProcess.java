@@ -1,34 +1,19 @@
 package ph.kana.grtb.process;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-@Deprecated
 public class TestAppGrailsProcess extends GrailsProcess {
-	private boolean includeUnitTest;
-	private boolean includeIntegTest;
+	private boolean flagUnit;
+	private boolean flagIntegration;
 	private String classNamePattern;
 
-	public boolean isIncludeUnitTest() {
-		return includeUnitTest;
+	public void setFlagUnit(boolean flagUnit) {
+		this.flagUnit = flagUnit;
 	}
 
-	public void setIncludeUnitTest(boolean includeUnitTest) {
-		this.includeUnitTest = includeUnitTest;
-	}
-
-	public boolean isIncludeIntegTest() {
-		return includeIntegTest;
-	}
-
-	public void setIncludeIntegTest(boolean includeIntegTest) {
-		this.includeIntegTest = includeIntegTest;
-	}
-
-	public String getClassNamePattern() {
-		return classNamePattern;
+	public void setFlagIntegration(boolean flagIntegration) {
+		this.flagIntegration = flagIntegration;
 	}
 
 	public void setClassNamePattern(String classNamePattern) {
@@ -40,14 +25,13 @@ public class TestAppGrailsProcess extends GrailsProcess {
 		List<String> args = new ArrayList<>();
 		
 		args.add("test-app");
-		if (isIncludeUnitTest()) {
+		if (flagUnit) {
 			args.add("-unit");
 		}
-		if (isIncludeIntegTest()) {
+		if (flagIntegration) {
 			args.add("-integration");
 		}
-		List<String> classPatterns = Arrays.asList(getClassNamePattern());
-		args.addAll(classPatterns);
+		args.add(classNamePattern);
 		
 		return args;
 	}

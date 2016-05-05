@@ -35,6 +35,16 @@ public class GrailsService {
 		return runAppProcess;
 	}
 
+	public GrailsProcess testApp(boolean unit, boolean integration, String classPattern) {
+		TestAppGrailsProcess testAppProcess = new TestAppGrailsProcess();
+		testAppProcess.setFlagUnit(unit);
+		testAppProcess.setFlagIntegration(integration);
+		testAppProcess.setClassNamePattern(classPattern);
+		execute(testAppProcess);
+
+		return testAppProcess;
+	}
+
 	public void endCurrentProcess() {
 		grailsProcessHolder.endCurrentProcess();
 	}

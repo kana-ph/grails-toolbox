@@ -7,6 +7,8 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -31,10 +33,13 @@ public class ToolboxController {
 
 	@FXML private Button collapseButton;
 	@FXML private Button killProcessButton;
+	@FXML private CheckBox includeUnitTestCheckbox;
+	@FXML private CheckBox includeIntegrationTestCheckbox;
 	@FXML private ComboBox<String> runAppTypeComboBox;
 	@FXML private ComboBox<String> runEnvironmentComboBox;
 	@FXML private TextArea consoleTextArea;
 	@FXML private TextField commandStringTextField;
+	@FXML private TextField testClassPatternTextField;
 	@FXML private ProgressBar processProgressBar;
 	@FXML private AnchorPane rootAnchorPane;
 	@FXML private AnchorPane consoleAnchorPane;
@@ -46,8 +51,8 @@ public class ToolboxController {
 
 	@FXML
 	public void initialize() {
-		checkGrailsInstallation();
 		initializeGrailsProject();
+		checkGrailsInstallation();
 		initializeRunAppTypeComboBox();
 	}
 
@@ -117,6 +122,23 @@ public class ToolboxController {
 	public void cleanButtonClick() {
 		GrailsProcess grailsProcess = grailsService.clean();
 		startActiveProcessBehavior(grailsProcess);
+	}
+
+	@FXML
+	public void testAppButtonClick() {
+		boolean includeUnitTest = includeUnitTestCheckbox.isSelected();
+		boolean includeIntegrationTest = includeIntegrationTestCheckbox.isSelected();
+		String classPattern = testClassPatternTextField.getText();
+
+		GrailsProcess grailsProcess = grailsService.testApp(includeUnitTest, includeIntegrationTest, classPattern);
+		startActiveProcessBehavior(grailsProcess);
+	}
+
+	@FXML
+	public void testClassPatternKeyPress(KeyEvent keyEvent) {
+		if (KeyCode.ENTER == keyEvent.getCode()) {
+			testAppButtonClick();
+		}
 	}
 
 	private void checkGrailsInstallation() {
