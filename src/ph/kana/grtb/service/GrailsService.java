@@ -1,6 +1,7 @@
 package ph.kana.grtb.service;
 
 import ph.kana.grtb.exception.GrailsProcessException;
+import ph.kana.grtb.process.CompileGrailsProcess;
 import ph.kana.grtb.process.GrailsProcess;
 import ph.kana.grtb.process.RunAppGrailsProcess;
 import ph.kana.grtb.process.VersionGrailsProcess;
@@ -18,6 +19,12 @@ public class GrailsService {
 		GrailsProcess grailsProcess = new VersionGrailsProcess();
 		InputStream inputStream = execute(grailsProcess);
 		return inputStream == null? null : grailsProcess;
+	}
+
+	public GrailsProcess compile() {
+		CompileGrailsProcess compileGrailsProcess = new CompileGrailsProcess();
+		execute(compileGrailsProcess);
+		return compileGrailsProcess;
 	}
 
 	public GrailsProcess runApp(RunAppType type, String environment) {

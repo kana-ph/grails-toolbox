@@ -107,6 +107,12 @@ public class ToolboxController {
 		killProcessButton.disableProperty().setValue(false);
 	}
 
+	@FXML
+	public void compileButtonClick() {
+		GrailsProcess grailsProcess = grailsService.compile();
+		startActiveProcessBehavior(grailsProcess);
+	}
+
 	private void checkGrailsInstallation() {
 		GrailsProcess grailsProcess = grailsService.checkInstallation();
 		if (null == grailsProcess) {

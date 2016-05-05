@@ -120,7 +120,7 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" styleClass="toolbox-menu" GridPane.rowIndex="1">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#compileButtonClicked" text="Compile">
+                              <Button mnemonicParsing="false" onAction="#compileButtonClick" text="Compile">
                                  <styleClass>
                                     <String fx:value="toolbox-item" />
                                     <String fx:value="med-button" />
