@@ -5,6 +5,7 @@ import javafx.concurrent.Task;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextArea;
+import javafx.scene.text.Text;
 import jdk.internal.util.xml.impl.Input;
 import ph.kana.grtb.exception.GrailsProcessException;
 import ph.kana.grtb.process.GrailsProcess;
@@ -26,16 +27,30 @@ public class ProcessStreamingService {
 	}
 
 	public void streamToTextArea(GrailsProcess grailsProcess, TextArea textArea, Consumer<GrailsProcess> cleanup) {
-		textArea.setText("");
-
 		Task bgTask = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
-				streamBufferedToTextArea(grailsProcess.getInputStream(), textArea);
+				InputStream inputStream = grailsProcess.getInputStream();
+				StringBuilder consoleContent = new StringBuilder();
+
+				try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+					String line = reader.readLine();
+					while (null != line) {
+						consoleContent
+							.append(line)
+							.append("\n");
+						updateMessage(consoleContent.toString());
+						line = reader.readLine();
+					}
+				} catch (IOException e) {
+					throw new GrailsProcessException("Error streaming grails process.", e);
+				}
 				return null;
 			}
 		};
-		Thread thread = new Thread(bgTask);
+		textArea.textProperty()
+			.bind(bgTask.messageProperty());
+		Thread thread = new Thread(bgTask, "process-streaming-bg-task");
 		thread.setDaemon(true);
 		thread.start();
 
@@ -47,21 +62,5 @@ public class ProcessStreamingService {
 		bgTask.setOnSucceeded(endProcessEventHandler);
 		bgTask.setOnCancelled(endProcessEventHandler);
 		bgTask.setOnFailed(endProcessEventHandler);
-	}
-
-	private void streamBufferedToTextArea(InputStream inputStream, TextArea textArea) {
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-			String line = reader.readLine();
-			while (null != line) {
-				final String readLine = line;
-				Platform.runLater(() -> {
-					textArea.appendText(readLine);
-					textArea.appendText("\n");
-				});
-				line = reader.readLine();
-			}
-		} catch (IOException e) {
-			throw new GrailsProcessException("Error streaming grails process.", e);
-		}
 	}
 }

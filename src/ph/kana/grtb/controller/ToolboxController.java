@@ -79,7 +79,9 @@ public class ToolboxController {
 
 		if (directory != null) {
 			grailsService.setProjectDirectory(directory);
-			window.setTitle(String.format("Grails Toolbox [%s]", directory.getAbsolutePath()));
+			Platform.runLater(() ->
+				window.setTitle(String.format("Grails Toolbox [%s]", directory.getAbsolutePath()))
+			);
 		} else {
 			Platform.exit();
 		}
