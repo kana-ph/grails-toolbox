@@ -17,6 +17,8 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -42,11 +44,18 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" styleClass="toolbox-menu" GridPane.rowIndex="2">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#runAppButtonClick" text="Run App">
+                              <Button mnemonicParsing="false" onAction="#runAppButtonClick" text="Run App" textAlignment="CENTER">
                                  <styleClass>
                                     <String fx:value="toolbox-item" />
                                     <String fx:value="large-button" />
                                  </styleClass>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icon/Running%20Rabbit-32.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Button>
                               <ComboBox fx:id="runAppTypeComboBox" editable="false" prefWidth="150.0" styleClass="toolbox-item" />
                               <ComboBox fx:id="runEnvironmentComboBox" editable="true" prefWidth="150.0" promptText="Grails Environment" styleClass="toolbox-item" visibleRowCount="3">
@@ -88,6 +97,13 @@
                                     <String fx:value="toolbox-item" />
                                     <String fx:value="large-button" />
                                  </styleClass>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icon/Test%20Tube-32.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Button>
                               <CheckBox fx:id="includeUnitTestCheckbox" mnemonicParsing="false" selected="true" styleClass="toolbox-item" text="Unit Test" />
                               <CheckBox fx:id="includeIntegrationTestCheckbox" mnemonicParsing="false" styleClass="toolbox-item" text="Integration Test" />
@@ -126,6 +142,13 @@
                                     <String fx:value="toolbox-item" />
                                     <String fx:value="med-button" />
                                  </styleClass>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icon/Robot-25.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Button>
                               <Separator prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#cleanButtonClick" text="Clean">
@@ -133,6 +156,13 @@
                                     <String fx:value="toolbox-item" />
                                     <String fx:value="med-button" />
                                  </styleClass>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icon/Broom-25.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Button>
                            </children>
                            <opaqueInsets>
@@ -154,6 +184,13 @@
                         <String fx:value="large-button" />
                         <String fx:value="toolbox-item" />
                      </styleClass>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/Horror-25.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                   <Label layoutX="-21.0" layoutY="87.0" styleClass="command-header" text="Current Process:" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="10.0" />
                   <TextField fx:id="commandStringTextField" editable="false" layoutY="135.0" styleClass="command-string" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
