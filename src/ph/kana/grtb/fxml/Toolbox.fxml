@@ -144,7 +144,7 @@
             </TitledPane>
          </panes>
       </Accordion>
-      <AnchorPane fx:id="killAppPane" prefHeight="750.0" prefWidth="240.0" styleClass="dark-overlay" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0">
+      <AnchorPane fx:id="killAppPane" prefHeight="750.0" prefWidth="240.0" styleClass="dark-overlay" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0">
          <children>
             <AnchorPane layoutX="10.0" layoutY="272.0" prefHeight="160.0" prefWidth="220.0" styleClass="kill-app-control" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                <children>
