@@ -22,6 +22,9 @@ public class GrailsProcessHolder {
 	private File projectDirectory;
 	private GrailsProcess grailsProcess;
 
+	private boolean stacktraceFlag;
+	private boolean verboseFlag;
+
 	public InputStream execute(GrailsProcess grailsProcess) {
 		setGrailsProcess(grailsProcess);
 		grailsProcess.setProjectDirectory(projectDirectory);
@@ -52,11 +55,25 @@ public class GrailsProcessHolder {
 		return projectDirectory;
 	}
 
+	public void setStacktraceFlag(boolean flag) {
+		stacktraceFlag = flag;
+	}
+
+	public void setVerboseFlag(boolean flag) {
+		verboseFlag = flag;
+	}
+
 	private void setGrailsProcess(GrailsProcess grailsProcess) {
 		if (null == this.grailsProcess || !this.grailsProcess.isAlive()) {
+			addFlags(grailsProcess);
 			this.grailsProcess = grailsProcess;
 		} else {
 			throw new GrailsProcessException(String.format("Grails command in progress: '%s'", grailsProcess.getCommand()));
 		}
+	}
+
+	private void addFlags(GrailsProcess grailsProcess) {
+		grailsProcess.setStacktraceMode(stacktraceFlag);
+		grailsProcess.setVerboseMode(verboseFlag);
 	}
 }

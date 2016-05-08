@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -177,13 +178,14 @@
                      </accelerator></MenuItem>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
+          <Menu mnemonicParsing="false" text="Grails">
                <accelerator>
                   <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                </accelerator>
+               <items>
+                  <CheckMenuItem fx:id="flagStacktraceCheckbox" mnemonicParsing="false" onAction="#toggleStacktrace" text="Add '--stacktrace'" />
+                  <CheckMenuItem fx:id="flagVerboseCheckbox" mnemonicParsing="false" onAction="#toggleVerbose" text="Add '--verbose'" />
+               </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>

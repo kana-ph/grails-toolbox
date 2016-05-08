@@ -35,6 +35,8 @@ public class ToolboxController {
 	@FXML private Button killProcessButton;
 	@FXML private CheckBox includeUnitTestCheckbox;
 	@FXML private CheckBox includeIntegrationTestCheckbox;
+	@FXML private CheckMenuItem flagStacktraceCheckbox;
+	@FXML private CheckMenuItem flagVerboseCheckbox;
 	@FXML private ComboBox<String> runAppTypeComboBox;
 	@FXML private ComboBox<String> runEnvironmentComboBox;
 	@FXML private TextArea consoleTextArea;
@@ -139,6 +141,16 @@ public class ToolboxController {
 		if (KeyCode.ENTER == keyEvent.getCode()) {
 			testAppButtonClick();
 		}
+	}
+
+	@FXML
+	public void toggleStacktrace() {
+		grailsService.setStacktraceFlag(flagStacktraceCheckbox.isSelected());
+	}
+
+	@FXML
+	public void toggleVerbose() {
+		grailsService.setVerboseFlag(flagVerboseCheckbox.isSelected());
 	}
 
 	private void checkGrailsInstallation() {

@@ -57,6 +57,14 @@ public class GrailsService {
 		return grailsProcessHolder.getProjectDirectory();
 	}
 
+	public void setStacktraceFlag(boolean flag) {
+		grailsProcessHolder.setStacktraceFlag(flag);
+	}
+
+	public void setVerboseFlag(boolean flag) {
+		grailsProcessHolder.setVerboseFlag(flag);
+	}
+
 	private InputStream execute(GrailsProcess process) {
 		try {
 			InputStream inputStream = grailsProcessHolder.execute(process);
