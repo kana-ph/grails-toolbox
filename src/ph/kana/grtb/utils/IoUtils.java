@@ -34,18 +34,6 @@ public class IoUtils {
 			bufferedWriter.write(content);
 		}
 	}
-
-	@Deprecated
-	public static void reflectStreamToTextArea(InputStream inputStream, JTextArea textArea) throws IOException {
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-			String line = reader.readLine();
-			while (line != null) {
-				textArea.append(line);
-				textArea.append("\n");
-				line = reader.readLine();
-			}
-		}
-	}
 	
 	public static void saveCurrentProject(File directory) throws IOException {
 		if (directory != null) {
@@ -61,16 +49,6 @@ public class IoUtils {
 		} else {
 			return new File(previousProjectLocation);
 		}
-	}
-
-	@Deprecated
-	public static void logExit(GrailsProcess process) {
-		printCommandLog('\u21e5', "Process Exited!", process.getCommand());
-	}
-
-	@Deprecated
-	public static void logProjectChange(File project) {
-		printCommandLog('>', "Grails project path set!", project.getAbsolutePath());
 	}
 	
 	private static void loadCache() {
@@ -93,11 +71,5 @@ public class IoUtils {
 		} catch (IOException e) {
 			e.printStackTrace(System.err);
 		}
-	}
-
-	@Deprecated
-	private static void printCommandLog(char icon, String message, String command) {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MMMdd HH:mm:ss");
-		System.out.println(String.format("[GrTb](%s) %s %c %s", dateFormat.format(new Date()), message, icon, command));
 	}
 }
