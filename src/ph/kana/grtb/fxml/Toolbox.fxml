@@ -53,7 +53,7 @@
                                  <graphic>
                                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@icon/Running%20Rabbit-32.png" />
+                                          <Image url="@icon/Running-32.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -146,7 +146,7 @@
                                  <graphic>
                                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@icon/Robot-25.png" />
+                                          <Image url="@icon/Hammer-32.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -160,7 +160,7 @@
                                  <graphic>
                                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@icon/Broom-25.png" />
+                                          <Image url="@icon/Broom-32.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -188,7 +188,7 @@
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icon/Horror-25.png" />
+                              <Image url="@icon/No%20Running-32.png" />
                            </image>
                         </ImageView>
                      </graphic>
