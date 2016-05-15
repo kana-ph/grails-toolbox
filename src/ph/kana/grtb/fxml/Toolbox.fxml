@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -201,7 +202,17 @@
       <AnchorPane fx:id="consoleAnchorPane" layoutX="240.0" layoutY="1.0" prefHeight="730.0" prefWidth="610.0" styleClass="white-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
          <children>
             <ProgressBar fx:id="processProgressBar" prefHeight="26.0" prefWidth="577.0" progress="0.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="3.0" />
-            <Button fx:id="collapseButton" layoutX="14.0" layoutY="643.0" mnemonicParsing="false" onAction="#toggleToolbox" prefHeight="20.0" prefWidth="26.0" text="«" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" />
+            <Button fx:id="collapseButton" layoutX="14.0" layoutY="643.0" mnemonicParsing="false" onAction="#toggleToolbox" prefHeight="20.0" prefWidth="26.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0">
+               <graphic>
+                  <ImageView fx:id="collapseButtonIcon" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/Chevron-32.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D height="1.0" />
+                     </viewport>
+                  </ImageView>
+               </graphic></Button>
             <TextArea fx:id="consoleTextArea" editable="false" layoutX="3.0" layoutY="6.0" prefHeight="200.0" prefWidth="200.0" styleClass="console" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
          </children>
       </AnchorPane>

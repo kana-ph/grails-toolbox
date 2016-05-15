@@ -1,5 +1,6 @@
 package ph.kana.grtb.controller;
 
+import javafx.animation.RotateTransition;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -7,11 +8,13 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import ph.kana.grtb.exception.GrailsProcessException;
 import ph.kana.grtb.process.GrailsProcess;
 import ph.kana.grtb.service.GrailsService;
@@ -20,7 +23,6 @@ import ph.kana.grtb.type.RunAppType;
 import java.io.*;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.function.Consumer;
 
 public class ToolboxController {
 
@@ -31,7 +33,7 @@ public class ToolboxController {
 
 	private Stage window;
 
-	@FXML private Button collapseButton;
+	@FXML private ImageView collapseButtonIcon;
 	@FXML private Button killProcessButton;
 	@FXML private CheckBox includeUnitTestCheckbox;
 	@FXML private CheckBox includeIntegrationTestCheckbox;
@@ -62,7 +64,9 @@ public class ToolboxController {
 	public void toggleToolbox() {
 		boolean expanding = DEFAULT_CONSOLE_LEFT_ANCHOR == rootAnchorPane.getLeftAnchor(consoleAnchorPane);
 
-		collapseButton.setText(expanding? "\u00bb" : "\u00ab");
+		RotateTransition iconRotate = new RotateTransition(Duration.millis(400), collapseButtonIcon);
+		iconRotate.setFromAngle(expanding? 0 : 180);
+		iconRotate.setToAngle(expanding? 180: 0);
 
 		Timer animationTimer = new Timer();
 		animationTimer.scheduleAtFixedRate(new TimerTask() {
@@ -79,6 +83,7 @@ public class ToolboxController {
 				}
 			}
 		}, 0, 1);
+		iconRotate.play();
 	}
 
 	@FXML
