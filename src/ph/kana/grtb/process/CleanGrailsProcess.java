@@ -9,7 +9,7 @@ public class CleanGrailsProcess extends GrailsProcess {
 
 	@Override
 	protected List<String> getArgs() {
-		return Arrays.asList(cleanAll? "clean" : "clean-all");
+		return Arrays.asList(cleanAll? "clean-all": "clean");
 	}
 
 	public void setCleanAll(boolean cleanAll) {
