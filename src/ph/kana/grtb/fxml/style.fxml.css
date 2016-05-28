@@ -10,7 +10,7 @@
 .command-string {
     -fx-font: 11px 'monospace';
     -fx-text-fill: #00001a;
-    -fx-background-color: #f2f2f2
+    -fx-background-color: #f2f2f2;
 }
 
 .console {
@@ -27,8 +27,17 @@
     -fx-background-color: rgba(0, 0, 0, 0.75);
 }
 
-.kill-app-control {
-    -fx-background-color: #f2f2f2
+.dialog {
+    -fx-background-color: #f2f2f2;
+}
+
+.dialog-title {
+    -fx-font-size: 14px;
+    -fx-text-fill: #00001a;
+    -fx-background-color: #e6e6ff;
+    -fx-font-weight: bold;
+    -fx-underline: true;
+    -fx-padding: 0px 0px 0px 15px;
 }
 
 .toolbox-menu {
