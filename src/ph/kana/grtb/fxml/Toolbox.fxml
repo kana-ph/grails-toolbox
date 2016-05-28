@@ -235,7 +235,7 @@
                   <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                </accelerator>
                <items>
-                  <MenuItem mnemonicParsing="false" text="Custom Command" />
+                  <MenuItem mnemonicParsing="false" onAction="#customCommandMenuItemClick" text="Custom Command" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <CheckMenuItem fx:id="flagStacktraceCheckbox" mnemonicParsing="false" onAction="#toggleStacktrace" text="Add '--stacktrace'" />
                   <CheckMenuItem fx:id="flagVerboseCheckbox" mnemonicParsing="false" onAction="#toggleVerbose" text="Add '--verbose'" />
@@ -248,13 +248,15 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TilePane fx:id="customCommandPane" alignment="CENTER" prefHeight="200.0" prefWidth="200.0" styleClass="dark-overlay" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TilePane fx:id="customCommandPane" alignment="CENTER" prefHeight="200.0" prefWidth="200.0" styleClass="dark-overlay" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="150.0" prefWidth="400.0" styleClass="dialog">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" prefWidth="377.0" styleClass="dialog-title" text="Grails Custom Command" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                  <Label layoutX="15.0" layoutY="69.0" styleClass="command-string" text="grails" />
-                  <TextField layoutX="63.0" layoutY="63.0" style="-fx-border-color: transparent transparent black transparent;" styleClass="command-string" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="14.0" />
+                  <Label layoutX="15.0" layoutY="69.0" styleClass="command-string" text="grails" AnchorPane.leftAnchor="14.0" />
+                  <TextField fx:id="customCommandTextField" layoutX="63.0" layoutY="63.0" onKeyPressed="#customCommandTextFieldKeyPress" promptText="args..." style="-fx-border-color: transparent transparent black transparent;" styleClass="command-string" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="14.0" />
+                  <Button layoutX="324.0" layoutY="110.0" mnemonicParsing="false" onAction="#executeButtonClick" text="Execute" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                  <Label layoutX="374.0" layoutY="9.0" onMouseClicked="#closeDialogClick" styleClass="low-profile-close" text="[X]" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                </children>
             </AnchorPane>
          </children></TilePane>

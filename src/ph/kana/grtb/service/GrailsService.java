@@ -69,6 +69,10 @@ public class GrailsService {
 		grailsProcessHolder.setVerboseFlag(flag);
 	}
 
+	public GrailsProcess executeCustom(String command) {
+		return runSimpleCommands(command);
+	}
+
 	private InputStream execute(GrailsProcess process) {
 		try {
 			InputStream inputStream = grailsProcessHolder.execute(process);

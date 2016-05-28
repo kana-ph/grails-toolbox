@@ -12,6 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.TilePane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -31,6 +33,8 @@ public class ToolboxController {
 
 	private final GrailsService grailsService = new GrailsService();
 
+	private Pane activeDialog;
+
 	private Stage window;
 
 	@FXML private ImageView collapseButtonIcon;
@@ -44,11 +48,13 @@ public class ToolboxController {
 	@FXML private ComboBox<String> runEnvironmentComboBox;
 	@FXML private TextArea consoleTextArea;
 	@FXML private TextField commandStringTextField;
+	@FXML private TextField customCommandTextField;
 	@FXML private TextField testClassPatternTextField;
 	@FXML private ProgressBar processProgressBar;
 	@FXML private AnchorPane rootAnchorPane;
 	@FXML private AnchorPane consoleAnchorPane;
 	@FXML private AnchorPane killAppPane;
+	@FXML private TilePane customCommandPane;
 
 	public void setWindow(Stage window) {
 		this.window = window;
@@ -160,6 +166,34 @@ public class ToolboxController {
 		grailsService.setVerboseFlag(flagVerboseCheckbox.isSelected());
 	}
 
+	@FXML
+	public void closeDialogClick() {
+		activeDialog.setVisible(false);
+		activeDialog = null;
+	}
+
+	@FXML
+	public void customCommandMenuItemClick() {
+		openDialog(customCommandPane);
+		customCommandTextField.requestFocus();
+	}
+
+	@FXML
+	public void executeButtonClick() {
+		String command = customCommandTextField.getText();
+		GrailsProcess grailsProcess = grailsService.executeCustom(command);
+		closeDialogClick();
+
+		startActiveProcessBehavior(grailsProcess);
+	}
+
+	@FXML
+	public void customCommandTextFieldKeyPress(KeyEvent keyEvent) {
+		if (KeyCode.ENTER == keyEvent.getCode()) {
+			executeButtonClick();
+		}
+	}
+
 	private void checkGrailsInstallation() {
 		GrailsProcess grailsProcess = grailsService.checkInstallation();
 		if (null == grailsProcess) {
@@ -189,6 +223,11 @@ public class ToolboxController {
 			comboBoxItems.addAll(RunAppType.descriptions());
 			runAppTypeComboBox.setValue(RunAppType.SERVER.getDescription());
 		});
+	}
+
+	private void openDialog(Pane dialogPane) {
+		activeDialog = dialogPane;
+		activeDialog.setVisible(true);
 	}
 
 	private void startActiveProcessBehavior(GrailsProcess grailsProcess) {
