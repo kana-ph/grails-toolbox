@@ -7,12 +7,12 @@ import java.util.Date;
 
 public final class Logger {
 
-	static private final String HEADER = "GrTb";
-	static private final String DATE_FORMAT = "yyyy-MMMdd HH:mm:ss";
+	private static final String HEADER = "GrTb";
+	private static final String DATE_FORMAT = "yyyy-MMMdd HH:mm:ss";
 
-	static private Logger STDOUT_LOGGER = null;
+	private static Logger STDOUT_LOGGER = null;
 
-	static public Logger getLogger() {
+	public static Logger getLogger() {
 		if (null == STDOUT_LOGGER) {
 			STDOUT_LOGGER = new Logger(System.out);
 		}

@@ -28,8 +28,8 @@ import java.util.TimerTask;
 
 public class ToolboxController {
 
-	static private final double DEFAULT_CONSOLE_LEFT_ANCHOR = 240.0;
-	static private final double EXPANDED_CONSOLE_LEFT_ANCHOR = 2.0;
+	private static final double DEFAULT_CONSOLE_LEFT_ANCHOR = 240.0;
+	private static final double EXPANDED_CONSOLE_LEFT_ANCHOR = 2.0;
 
 	private final GrailsService grailsService = new GrailsService();
 

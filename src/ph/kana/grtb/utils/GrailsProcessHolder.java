@@ -9,8 +9,8 @@ import java.io.InputStream;
 
 public class GrailsProcessHolder {
 
-	static private GrailsProcessHolder instance = null;
-	static public GrailsProcessHolder getInstance() {
+	private static GrailsProcessHolder instance = null;
+	public static GrailsProcessHolder getInstance() {
 		if (null == instance) {
 			instance = new GrailsProcessHolder();
 		}

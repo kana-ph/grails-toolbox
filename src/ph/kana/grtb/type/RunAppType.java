@@ -17,14 +17,14 @@ public enum RunAppType {
 		this.command = command;
 	}
 
-	static public List<String> descriptions() {
+	public static List<String> descriptions() {
 		List<RunAppType> instances = Arrays.asList(values());
 		return instances.stream()
 			.map(RunAppType::getDescription)
 			.collect(Collectors.toList());
 	}
 
-	static public RunAppType findByDescription(String description) {
+	public static RunAppType findByDescription(String description) {
 		List<RunAppType> instances = Arrays.asList(values());
 		List<RunAppType> findResults = instances.stream()
 			.filter((type) -> type.description.equals(description))
