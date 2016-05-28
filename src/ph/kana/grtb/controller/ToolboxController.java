@@ -37,6 +37,7 @@ public class ToolboxController {
 	@FXML private Button killProcessButton;
 	@FXML private CheckBox includeUnitTestCheckbox;
 	@FXML private CheckBox includeIntegrationTestCheckbox;
+	@FXML private CheckBox cleanAllCheckbox;
 	@FXML private CheckMenuItem flagStacktraceCheckbox;
 	@FXML private CheckMenuItem flagVerboseCheckbox;
 	@FXML private ComboBox<String> runAppTypeComboBox;
@@ -127,7 +128,8 @@ public class ToolboxController {
 
 	@FXML
 	public void cleanButtonClick() {
-		GrailsProcess grailsProcess = grailsService.clean();
+		boolean cleanAll = cleanAllCheckbox.isSelected();
+		GrailsProcess grailsProcess = grailsService.clean(cleanAll);
 		startActiveProcessBehavior(grailsProcess);
 	}
 

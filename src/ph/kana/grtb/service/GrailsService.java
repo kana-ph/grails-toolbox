@@ -22,8 +22,12 @@ public class GrailsService {
 		return runSimpleCommands("compile");
 	}
 
-	public GrailsProcess clean() {
-		return runSimpleCommands("clean");
+	public GrailsProcess clean(boolean cleanAll) {
+		CleanGrailsProcess cleanGrailsProcess = new CleanGrailsProcess();
+		cleanGrailsProcess.setCleanAll(cleanAll);
+		execute(cleanGrailsProcess);
+
+		return cleanGrailsProcess;
 	}
 
 	public GrailsProcess runApp(RunAppType type, String environment) {
