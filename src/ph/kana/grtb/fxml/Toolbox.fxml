@@ -192,7 +192,7 @@
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icon/No%20Running-32.png" />
+                              <Image url="@icon/No-Running-32.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -260,5 +260,6 @@
                </children>
             </AnchorPane>
          </children></TilePane>
+      <TilePane fx:id="aboutPane" prefHeight="200.0" prefWidth="200.0" styleClass="dark-overlay" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
