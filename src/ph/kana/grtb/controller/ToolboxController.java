@@ -53,7 +53,7 @@ public class ToolboxController {
 	@FXML private ProgressBar processProgressBar;
 	@FXML private AnchorPane rootAnchorPane;
 	@FXML private AnchorPane consoleAnchorPane;
-	@FXML private AnchorPane killAppPane;
+	@FXML private TilePane killAppPane;
 	@FXML private TilePane customCommandPane;
 
 	public void setWindow(Stage window) {
