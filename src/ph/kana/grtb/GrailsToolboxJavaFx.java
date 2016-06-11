@@ -29,6 +29,7 @@ public class GrailsToolboxJavaFx extends Application {
 
 		ToolboxController toolboxController = loader.getController();
 		toolboxController.setWindow(stage);
+		toolboxController.setApplication(this);
 
 		stage.setTitle("Grails Toolbox");
 		stage.setMinWidth(APP_WIDTH);

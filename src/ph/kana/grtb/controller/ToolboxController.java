@@ -1,6 +1,9 @@
 package ph.kana.grtb.controller;
 
+import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
+import com.sun.javafx.application.HostServicesDelegate;
 import javafx.animation.RotateTransition;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -36,6 +39,7 @@ public class ToolboxController {
 	private Pane activeDialog;
 
 	private Stage window;
+	private Application application;
 
 	@FXML private ImageView collapseButtonIcon;
 	@FXML private Button killProcessButton;
@@ -59,6 +63,10 @@ public class ToolboxController {
 
 	public void setWindow(Stage window) {
 		this.window = window;
+	}
+
+	public void setApplication(Application application) {
+		this.application = application;
 	}
 
 	@FXML
@@ -200,6 +208,26 @@ public class ToolboxController {
 		openDialog(aboutPane);
 	}
 
+	@FXML
+	public void githubLinkClicked() {
+		openLink("https://github.com/kana0011/grails-toolbox");
+	}
+
+	@FXML
+	public void facebookLinkClicked() {
+		openLink("https://www.facebook.com/kana0011");
+	}
+
+	@FXML
+	public void twitterLinkClicked() {
+		openLink("https://twitter.com/_kana0011");
+	}
+
+	@FXML
+	public void icons8LinkClicked() {
+		openLink("https://icons8.com/");
+	}
+
 	private void checkGrailsInstallation() {
 		GrailsProcess grailsProcess = grailsService.checkInstallation();
 		if (null == grailsProcess) {
@@ -291,5 +319,10 @@ public class ToolboxController {
 		bgTask.setOnSucceeded(endProcessEventHandler);
 		bgTask.setOnCancelled(endProcessEventHandler);
 		bgTask.setOnFailed(endProcessEventHandler);
+	}
+
+	private void openLink(String url) {
+		HostServicesDelegate hostServices = HostServicesFactory.getInstance(application);
+		hostServices.showDocument(url);
 	}
 }

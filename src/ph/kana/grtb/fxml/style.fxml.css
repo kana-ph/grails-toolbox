@@ -44,6 +44,7 @@
     -fx-font: 12px 'monospace';
     -fx-underline: true;
     -fx-text-fill: #3399ff;
+    -fx-cursor: 'hand';
 }
 
 .toolbox-menu {

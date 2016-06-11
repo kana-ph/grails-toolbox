@@ -255,11 +255,11 @@
          <children>
             <AnchorPane prefHeight="150.0" prefWidth="400.0" styleClass="dialog">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" prefWidth="377.0" styleClass="dialog-title" text="Grails Custom Command" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <Label layoutX="14.0" layoutY="14.0" prefWidth="377.0" styleClass="dialog-title" text="Grails Custom Command" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0" />
+                  <Label layoutX="374.0" layoutY="9.0" onMouseClicked="#closeDialogClick" styleClass="low-profile-close" text="[X]" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                   <Label layoutX="15.0" layoutY="69.0" styleClass="command-string" text="grails" AnchorPane.leftAnchor="14.0" />
                   <TextField fx:id="customCommandTextField" layoutX="63.0" layoutY="63.0" onKeyPressed="#customCommandTextFieldKeyPress" promptText="args..." style="-fx-border-color: transparent transparent black transparent;" styleClass="command-string" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="14.0" />
                   <Button layoutX="324.0" layoutY="110.0" mnemonicParsing="false" onAction="#executeButtonClick" text="Execute" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-                  <Label layoutX="374.0" layoutY="9.0" onMouseClicked="#closeDialogClick" styleClass="low-profile-close" text="[X]" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                </children>
             </AnchorPane>
          </children></TilePane>
@@ -267,36 +267,38 @@
          <children>
             <AnchorPane prefHeight="230.0" prefWidth="420.0" styleClass="dialog">
                <children>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="42.0">
+                  <Label prefWidth="377.0" styleClass="dialog-title" text="About Grails Toolbox" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0" />
+                  <Label onMouseClicked="#closeDialogClick" styleClass="low-profile-close" text="[X]" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="49.0">
                      <image>
                         <Image url="@icon/About-50.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="81.0" layoutY="42.0" text="A little environment to run Grails commands." AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="42.0" />
-                  <Label layoutX="81.0" layoutY="58.0" text="Without typing Grails commands!" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="58.0" />
+                  <Label layoutX="83.0" layoutY="49.0" text="A little environment to run Grails commands." AnchorPane.leftAnchor="83.0" AnchorPane.topAnchor="49.0" />
+                  <Label layoutX="83.0" layoutY="65.0" text="Without typing Grails commands!" AnchorPane.leftAnchor="83.0" AnchorPane.topAnchor="65.0" />
                   <Label layoutX="75.0" layoutY="115.0" text="Created by KaNa" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="115.0" />
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="197.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="110.0">
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="197.0" layoutY="110.0" onMouseClicked="#githubLinkClicked" pickOnBounds="true" preserveRatio="true" styleClass="hyperlink-text" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="110.0">
                      <image>
                         <Image url="@icon/GitHub-Filled-25.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="227.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="110.0">
-                     <image>
-                        <Image url="@icon/Twitter-25.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="260.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="111.0">
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="227.0" layoutY="110.0" onMouseClicked="#facebookLinkClicked" pickOnBounds="true" preserveRatio="true" styleClass="hyperlink-text" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="110.0">
                      <image>
                         <Image url="@icon/Facebook-25.png" />
                      </image>
                   </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="260.0" layoutY="111.0" onMouseClicked="#twitterLinkClicked" pickOnBounds="true" preserveRatio="true" styleClass="hyperlink-text" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="111.0">
+                     <image>
+                        <Image url="@icon/Twitter-25.png" />
+                     </image>
+                  </ImageView>
                   <Label layoutX="80.0" layoutY="152.0" text="Free icons from" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="152.0" />
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="202.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="147.0">
+                  <Label layoutX="195.0" layoutY="152.0" onMouseClicked="#icons8LinkClicked" styleClass="hyperlink-text" text="icons8.com" AnchorPane.leftAnchor="185.0" AnchorPane.topAnchor="152.0" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="202.0" layoutY="147.0" onMouseClicked="#icons8LinkClicked" pickOnBounds="true" preserveRatio="true" styleClass="hyperlink-text" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="147.0">
                      <image>
                         <Image url="@icon/Icons8-Logo-25.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="195.0" layoutY="152.0" styleClass="hyperlink-text" text="icons8.com" AnchorPane.leftAnchor="185.0" AnchorPane.topAnchor="152.0" />
                   <Button layoutX="179.0" layoutY="190.0" mnemonicParsing="false" onAction="#closeDialogClick" text="Close" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="179.0" AnchorPane.rightAnchor="179.0" />
                </children>
             </AnchorPane>
