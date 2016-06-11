@@ -260,6 +260,43 @@
                </children>
             </AnchorPane>
          </children></TilePane>
-      <TilePane fx:id="aboutPane" prefHeight="200.0" prefWidth="200.0" styleClass="dark-overlay" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <TilePane fx:id="aboutPane" alignment="CENTER" prefHeight="200.0" prefWidth="200.0" styleClass="dark-overlay" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="230.0" prefWidth="420.0" styleClass="dialog">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="42.0">
+                     <image>
+                        <Image url="@icon/About-50.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="81.0" layoutY="42.0" text="A little environment to run Grails commands." AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="42.0" />
+                  <Label layoutX="81.0" layoutY="58.0" text="Without typing Grails commands!" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="58.0" />
+                  <Label layoutX="75.0" layoutY="115.0" text="Created by KaNa" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="115.0" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="197.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="110.0">
+                     <image>
+                        <Image url="@icon/GitHub-Filled-25.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="227.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="110.0">
+                     <image>
+                        <Image url="@icon/Twitter-25.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="260.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="111.0">
+                     <image>
+                        <Image url="@icon/Facebook-25.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="80.0" layoutY="152.0" text="Free icons from" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="152.0" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="202.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="147.0">
+                     <image>
+                        <Image url="@icon/Icons8-Logo-25.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="195.0" layoutY="152.0" styleClass="hyperlink-text" text="icons8.com" AnchorPane.leftAnchor="185.0" AnchorPane.topAnchor="152.0" />
+                  <Button layoutX="179.0" layoutY="190.0" mnemonicParsing="false" onAction="#closeDialogClick" text="Close" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="179.0" AnchorPane.rightAnchor="179.0" />
+               </children>
+            </AnchorPane>
+         </children></TilePane>
    </children>
 </AnchorPane>
