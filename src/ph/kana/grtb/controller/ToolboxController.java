@@ -55,6 +55,7 @@ public class ToolboxController {
 	@FXML private AnchorPane consoleAnchorPane;
 	@FXML private TilePane killAppPane;
 	@FXML private TilePane customCommandPane;
+	@FXML private TilePane aboutPane;
 
 	public void setWindow(Stage window) {
 		this.window = window;
@@ -192,6 +193,11 @@ public class ToolboxController {
 		if (KeyCode.ENTER == keyEvent.getCode()) {
 			executeButtonClick();
 		}
+	}
+
+	@FXML
+	public void aboutMenuItemClick() {
+		openDialog(aboutPane);
 	}
 
 	private void checkGrailsInstallation() {
