@@ -103,7 +103,9 @@ public class ToolboxController {
 	}
 
 	@FXML
-	public void openProject() {
+	public boolean openProject() {
+		boolean fileOpened = false;
+
 		DirectoryChooser directoryChooser = new DirectoryChooser();
 		directoryChooser.setTitle("Open Grails Project Directory");
 		directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
@@ -114,9 +116,9 @@ public class ToolboxController {
 			Platform.runLater(() ->
 				window.setTitle(String.format("Grails Toolbox [%s]", directory.getAbsolutePath()))
 			);
-		} else {
-			Platform.exit();
+			fileOpened = true;
 		}
+		return fileOpened;
 	}
 
 	@FXML
@@ -233,7 +235,7 @@ public class ToolboxController {
 		if (null == grailsProcess) {
 			Platform.runLater(() -> {
 				alertError("Grails is not installed!");
-				Platform.exit();
+				exitApp();
 			});
 		} else {
 			streamToTextArea(grailsProcess, consoleTextArea);
@@ -247,7 +249,10 @@ public class ToolboxController {
 				window.setTitle(String.format("Grails Toolbox [%s]", projectDirectory.getAbsolutePath()))
 			);
 		} else {
-			openProject();
+			boolean projectOpened = openProject();
+			if (!projectOpened) {
+				exitApp();
+			}
 		}
 	}
 
@@ -324,5 +329,10 @@ public class ToolboxController {
 	private void openLink(String url) {
 		HostServicesDelegate hostServices = HostServicesFactory.getInstance(application);
 		hostServices.showDocument(url);
+	}
+	
+	private void exitApp() {
+		Platform.exit();
+		System.exit(0);
 	}
 }
