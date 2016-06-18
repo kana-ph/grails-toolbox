@@ -1,22 +1,26 @@
 <component name="ArtifactManager">
   <artifact type="javafx" name="grails-toolbox">
-    <output-path>$PROJECT_DIR$/out/artifacts/grails_toolbox</output-path>
+    <output-path>$PROJECT_DIR$/dist/artifacts/grails_toolbox</output-path>
     <properties id="javafx-properties">
       <options>
         <option name="appClass" value="ph.kana.grtb.GrailsToolboxJavaFx" />
         <option name="description" value="A little environment to run Grails commands.&#10;Without typing Grails commands!" />
         <option name="height" value="750" />
         <option name="htmlParamFile" value="" />
+        <option name="nativeBundle" value="all" />
         <option name="paramFile" value="" />
         <option name="title" value="Grails Toolbox v2" />
+        <option name="updateMode" value="always" />
         <option name="vendor" value="@_kana0011" />
         <option name="width" value="830" />
       </options>
     </properties>
     <root id="root">
-      <element id="archive" name="grails-toolbox.jar">
-        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      <element id="archive" name="grails_toolbox.jar">
         <element id="module-output" name="grails-toolbox" />
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/manifest.mf" output-file-name="MANIFEST.MF" />
+        </element>
       </element>
     </root>
   </artifact>
