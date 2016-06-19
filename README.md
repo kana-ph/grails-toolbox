@@ -20,4 +20,3 @@ Without typing Grails commands!
 ##### Wishlist
 * Auto-Complete on Custom Grails commands (via History or searching through available scripts)
 * Implementation of `create-service`, `create-controller`, or `create-domain-class` with prediction based on package structure.
-* Relase native binaries (_`grails-toolbox.exe`, `grails-toolbox.rpm`, `grails-toolbox.deb`, etc..._)
