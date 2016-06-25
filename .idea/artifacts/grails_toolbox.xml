@@ -1,6 +1,9 @@
 <component name="ArtifactManager">
   <artifact type="javafx" name="grails-toolbox">
     <output-path>$PROJECT_DIR$/dist/artifacts/grails_toolbox</output-path>
+    <properties id="ant-preprocessing">
+      <options enabled="true" />
+    </properties>
     <properties id="javafx-properties">
       <options>
         <option name="appClass" value="ph.kana.grtb.GrailsToolboxJavaFx" />
