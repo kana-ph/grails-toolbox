@@ -1,6 +1,6 @@
 package ph.kana.grtb.utils;
 
-import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,20 +8,14 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Properties;
-import javax.swing.JTextArea;
-import ph.kana.grtb.process.GrailsProcess;
 
 public class IoUtils {
 	
 	private IoUtils() { }
 	
-	private static final File CACHE_FILE = new File(".grtb-cache");
+	private static final File CACHE_FILE = new File(System.getProperty("user.home") + "/.grtb-cache");
 	private static final Properties CACHE = new Properties();
 	static {
 		loadCache();

@@ -78,7 +78,7 @@ public class ToolboxController {
 
 	@FXML
 	public void toggleToolbox() {
-		boolean expanding = DEFAULT_CONSOLE_LEFT_ANCHOR == rootAnchorPane.getLeftAnchor(consoleAnchorPane);
+		boolean expanding = DEFAULT_CONSOLE_LEFT_ANCHOR == AnchorPane.getLeftAnchor(consoleAnchorPane);
 
 		RotateTransition iconRotate = new RotateTransition(Duration.millis(400), collapseButtonIcon);
 		iconRotate.setFromAngle(expanding? 0 : 180);
@@ -91,9 +91,9 @@ public class ToolboxController {
 				double increment = expanding? -1.0 : 1.0;
 				double finalAnchor = expanding? EXPANDED_CONSOLE_LEFT_ANCHOR : DEFAULT_CONSOLE_LEFT_ANCHOR;
 
-				double currentAnchor = rootAnchorPane.getLeftAnchor(consoleAnchorPane);
+				double currentAnchor = AnchorPane.getLeftAnchor(consoleAnchorPane);
 				if ((expanding && (currentAnchor > finalAnchor)) || (!expanding && currentAnchor < finalAnchor)) {
-					rootAnchorPane.setLeftAnchor(consoleAnchorPane, currentAnchor + increment);
+					AnchorPane.setLeftAnchor(consoleAnchorPane, currentAnchor + increment);
 				} else {
 					this.cancel();
 				}
