@@ -26,6 +26,7 @@ import ph.kana.grtb.service.GrailsService;
 import ph.kana.grtb.type.RunAppType;
 
 import java.io.*;
+import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -104,21 +105,19 @@ public class ToolboxController {
 
 	@FXML
 	public boolean openProject() {
-		boolean fileOpened = false;
-
 		DirectoryChooser directoryChooser = new DirectoryChooser();
 		directoryChooser.setTitle("Open Grails Project Directory");
 		directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-		File directory = directoryChooser.showDialog(window);
-
-		if (directory != null) {
-			grailsService.setProjectDirectory(directory);
-			Platform.runLater(() ->
-				window.setTitle(String.format("Grails Toolbox [%s]", directory.getAbsolutePath()))
-			);
-			fileOpened = true;
-		}
-		return fileOpened;
+		return Optional
+			.ofNullable(directoryChooser.showDialog(window))
+			.map(directory -> {
+				grailsService.setProjectDirectory(directory);
+				Platform.runLater(() ->
+					window.setTitle(String.format("Grails Toolbox [%s]", directory.getAbsolutePath()))
+				);
+				return true;
+			})
+			.orElse(false);
 	}
 
 	@FXML
@@ -132,9 +131,9 @@ public class ToolboxController {
 
 	@FXML
 	public void killProcessButtonClick() {
-		killProcessButton.disableProperty().setValue(true);
+		killProcessButton.setDisable(true);
 		grailsService.endCurrentProcess();
-		killProcessButton.disableProperty().setValue(false);
+		killProcessButton.setDisable(false);
 	}
 
 	@FXML
@@ -243,17 +242,21 @@ public class ToolboxController {
 	}
 
 	private void initializeGrailsProject() {
-		File projectDirectory = grailsService.getProjectDirectory();
-		if (projectDirectory != null) {
-			Platform.runLater(() ->
-				window.setTitle(String.format("Grails Toolbox [%s]", projectDirectory.getAbsolutePath()))
-			);
-		} else {
-			boolean projectOpened = openProject();
-			if (!projectOpened) {
-				exitApp();
-			}
-		}
+		grailsService
+			.getProjectDirectory()
+			.map(File::getAbsolutePath)
+			.map(path -> String.format("Grails Toolbox [%s]", path))
+			.filter(title -> {
+				Platform.runLater(() -> window.setTitle(title));
+				return true;
+			})
+			.orElseGet(() -> {
+				boolean projectOpened = openProject();
+				if (!projectOpened) {
+					exitApp();
+				}
+				return null;
+			});
 	}
 
 	private void initializeRunAppTypeComboBox() {
@@ -310,7 +313,8 @@ public class ToolboxController {
 				return null;
 			}
 		};
-		textArea.textProperty()
+		textArea
+			.textProperty()
 			.bind(bgTask.messageProperty());
 		Thread thread = new Thread(bgTask, "process-streaming-bg-task");
 		thread.setDaemon(true);

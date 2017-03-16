@@ -7,6 +7,7 @@ import ph.kana.grtb.utils.GrailsProcessHolder;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.Optional;
 
 public class GrailsService {
 
@@ -14,8 +15,10 @@ public class GrailsService {
 
 	public GrailsProcess checkInstallation() {
 		GrailsProcess grailsProcess = new GenericGrailsProcess("--version");
-		InputStream inputStream = execute(grailsProcess);
-		return inputStream == null? null : grailsProcess;
+
+		return execute(grailsProcess)
+			.map(p -> grailsProcess)
+			.orElse(null);
 	}
 
 	public GrailsProcess compile() {
@@ -57,8 +60,9 @@ public class GrailsService {
 		grailsProcessHolder.setProjectDirectory(projectDirectory);
 	}
 
-	public File getProjectDirectory() {
-		return grailsProcessHolder.getProjectDirectory();
+	public Optional<File> getProjectDirectory() {
+		return Optional
+			.ofNullable(grailsProcessHolder.getProjectDirectory());
 	}
 
 	public void setStacktraceFlag(boolean flag) {
@@ -73,12 +77,12 @@ public class GrailsService {
 		return runSimpleCommands(command);
 	}
 
-	private InputStream execute(GrailsProcess process) {
+	private Optional<InputStream> execute(GrailsProcess process) {
 		try {
-			InputStream inputStream = grailsProcessHolder.execute(process);
-			return inputStream;
+			return Optional
+				.of(grailsProcessHolder.execute(process));
 		} catch (GrailsProcessException e) {
-			return null;
+			return Optional.empty();
 		}
 	}
 

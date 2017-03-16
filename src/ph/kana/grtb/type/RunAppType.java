@@ -2,6 +2,7 @@ package ph.kana.grtb.type;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public enum RunAppType {
@@ -18,18 +19,18 @@ public enum RunAppType {
 	}
 
 	public static List<String> descriptions() {
-		List<RunAppType> instances = Arrays.asList(values());
-		return instances.stream()
+		return Arrays
+			.stream(values())
 			.map(RunAppType::getDescription)
 			.collect(Collectors.toList());
 	}
 
 	public static RunAppType findByDescription(String description) {
-		List<RunAppType> instances = Arrays.asList(values());
-		List<RunAppType> findResults = instances.stream()
-			.filter((type) -> type.description.equals(description))
-			.collect(Collectors.toList());
-		return findResults.isEmpty()? null : findResults.get(0);
+		return Arrays
+			.stream(values())
+			.filter(description::equals)
+			.findFirst()
+			.orElse(null);
 	}
 
 	public String getDescription() {

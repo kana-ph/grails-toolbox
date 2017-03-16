@@ -1,6 +1,5 @@
 package ph.kana.grtb.utils;
 
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Optional;
 import java.util.Properties;
 
 public class IoUtils {
@@ -29,20 +29,20 @@ public class IoUtils {
 		}
 	}
 	
-	public static void saveCurrentProject(File directory) throws IOException {
-		if (directory != null) {
-			CACHE.setProperty(KEY_PREVIOUS_PROJECT, directory.getAbsolutePath());
-			saveCache();
-		}
+	public static void saveCurrentProject(Optional<File> directory) throws IOException {
+		directory
+			.map(File::getAbsolutePath)
+			.ifPresent(path -> {
+				CACHE.setProperty(KEY_PREVIOUS_PROJECT, path);
+				saveCache();
+			});
 	}
 	
-	public static File fetchPreviousProject() throws IOException {
-		String previousProjectLocation = CACHE.getProperty(KEY_PREVIOUS_PROJECT);
-		if (null == previousProjectLocation || previousProjectLocation.isEmpty()) {
-			return null;
-		} else {
-			return new File(previousProjectLocation);
-		}
+	public static Optional<File> fetchPreviousProject() throws IOException {
+		return Optional
+			.ofNullable(CACHE.getProperty(KEY_PREVIOUS_PROJECT))
+			.filter(property -> !property.isEmpty())
+			.map(File::new);
 	}
 	
 	private static void loadCache() {
