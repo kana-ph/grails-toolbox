@@ -222,7 +222,7 @@
       </AnchorPane>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu fx:id="fileMenu" text="File">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#openProject" text="Open Project">
                      <accelerator>
@@ -230,18 +230,50 @@
                      </accelerator></MenuItem>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Grails">
+          <Menu fx:id="grailsMenu" text="Grails">
                <accelerator>
                   <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                </accelerator>
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#customCommandMenuItemClick" text="Custom Command" />
+                  <MenuItem mnemonicParsing="false" onAction="#runAppButtonClick" text="Run App">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#testAppButtonClick" text="Test App">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="T" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#cleanButtonClick" text="Clean">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#compileButtonClick" text="Compile">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="M" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <Menu mnemonicParsing="false" text="Generate">
+                    <items>
+                      <MenuItem disable="true" mnemonicParsing="false" text="Domain Class" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Controller" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Service" />
+                    </items>
+                  </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#customCommandMenuItemClick" text="Custom Command">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="SLASH" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <CheckMenuItem fx:id="flagStacktraceCheckbox" mnemonicParsing="false" onAction="#toggleStacktrace" text="Add '--stacktrace'" />
                   <CheckMenuItem fx:id="flagVerboseCheckbox" mnemonicParsing="false" onAction="#toggleVerbose" text="Add '--verbose'" />
                </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu text="Help">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#aboutMenuItemClick" text="About">
                      <accelerator>

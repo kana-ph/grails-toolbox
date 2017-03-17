@@ -2,7 +2,6 @@ package ph.kana.grtb.controller;
 
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
-import com.sun.xml.internal.ws.util.InjectionPlan.FieldInjectionPlan;
 import javafx.animation.RotateTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -62,6 +61,8 @@ public class ToolboxController {
 	@FXML private Accordion toolboxAccordion;
 	@FXML private AnchorPane rootAnchorPane;
 	@FXML private AnchorPane consoleAnchorPane;
+	@FXML private Menu fileMenu;
+	@FXML private Menu grailsMenu;
 	@FXML private TilePane killAppPane;
 	@FXML private TilePane customCommandPane;
 	@FXML private TilePane aboutPane;
@@ -293,12 +294,23 @@ public class ToolboxController {
 		commandStringTextField.setText(grailsProcess.getCommand());
 		processProgressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
 		killAppPane.setVisible(true);
+		recursiveMenuSetDisable(fileMenu, true);
+		recursiveMenuSetDisable(grailsMenu, true);
 	}
 
 	private void startInactiveProcessBehavior() {
 		commandStringTextField.setText("");
 		processProgressBar.setProgress(0.0);
 		killAppPane.setVisible(false);
+		recursiveMenuSetDisable(fileMenu, false);
+		recursiveMenuSetDisable(grailsMenu, false);
+	}
+
+	private void recursiveMenuSetDisable(Menu menu, boolean disable) {
+		menu.setDisable(disable);
+		menu
+			.getItems()
+			.forEach(item -> item.setDisable(disable));
 	}
 
 	private void alertError(String message) {
