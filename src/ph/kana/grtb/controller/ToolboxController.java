@@ -2,9 +2,11 @@ package ph.kana.grtb.controller;
 
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
+import com.sun.xml.internal.ws.util.InjectionPlan.FieldInjectionPlan;
 import javafx.animation.RotateTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.property.ObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.Event;
@@ -24,6 +26,7 @@ import ph.kana.grtb.exception.GrailsProcessException;
 import ph.kana.grtb.process.GrailsProcess;
 import ph.kana.grtb.service.GrailsService;
 import ph.kana.grtb.type.RunAppType;
+import ph.kana.grtb.utils.IoUtils;
 
 import java.io.*;
 import java.util.Optional;
@@ -56,6 +59,7 @@ public class ToolboxController {
 	@FXML private TextField customCommandTextField;
 	@FXML private TextField testClassPatternTextField;
 	@FXML private ProgressBar processProgressBar;
+	@FXML private Accordion toolboxAccordion;
 	@FXML private AnchorPane rootAnchorPane;
 	@FXML private AnchorPane consoleAnchorPane;
 	@FXML private TilePane killAppPane;
@@ -75,6 +79,7 @@ public class ToolboxController {
 		initializeGrailsProject();
 		checkGrailsInstallation();
 		initializeRunAppTypeComboBox();
+		initializeToolboxAccordion();
 	}
 
 	@FXML
@@ -267,6 +272,16 @@ public class ToolboxController {
 		});
 	}
 
+	private void initializeToolboxAccordion() {
+		int lastOpenToolboxIndex = IoUtils.fetchOpenToolbox();
+		TitledPane lastOpenToolbox = toolboxAccordion
+			.getPanes()
+			.get(lastOpenToolboxIndex);
+		ObjectProperty<TitledPane> selectedPane = toolboxAccordion.expandedPaneProperty();
+		selectedPane.setValue(lastOpenToolbox);
+		selectedPane.addListener((observable, oldValue, newValue) -> saveSelectedPane());
+	}
+
 	private void openDialog(Pane dialogPane) {
 		activeDialog = dialogPane;
 		activeDialog.setVisible(true);
@@ -328,9 +343,7 @@ public class ToolboxController {
 		bgTask.setOnCancelled(endProcessEventHandler);
 		bgTask.setOnFailed(endProcessEventHandler);
 
-		Thread thread = new Thread(bgTask, "process-streaming-bg-task");
-		thread.setDaemon(true);
-		thread.start();
+		startDaemonThread(bgTask, "process-streaming-bg-task");
 	}
 
 	private void scrollConsoleToEnd() {
@@ -349,5 +362,35 @@ public class ToolboxController {
 	private void exitApp() {
 		Platform.exit();
 		System.exit(0);
+	}
+
+	private void saveSelectedPane() {
+		TitledPane selectedPane = toolboxAccordion.getExpandedPane();
+		Task bgTask = new Task<Void>() {
+			@Override
+			public Void call() {
+				sleep(10000);
+				if (selectedPane == toolboxAccordion.getExpandedPane()) {
+					int selectedIndex = toolboxAccordion
+						.getPanes()
+						.indexOf(selectedPane);
+					IoUtils.saveOpenToolbox(selectedIndex);
+				}
+				return null;
+			}
+		};
+		startDaemonThread(bgTask, "save-last-toolbox-bg-task");
+	}
+
+	private void startDaemonThread(Task<Void> task, String threadName) {
+		Thread thread = new Thread(task, threadName);
+		thread.setDaemon(true);
+		thread.start();
+	}
+
+	private void sleep(long millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {}
 	}
 }

@@ -32,7 +32,7 @@ public abstract class GrailsProcess {
 		logger.info("Running command '%s'", command);
 		try {
 			Runtime runtime = Runtime.getRuntime();
-			process = runtime.exec(String.format("grails %s", command), null, getProjectDirectory());
+			process = runtime.exec(String.format("grails %s", command), null, projectDirectory);
 		} catch (IOException e) {
 			throw new GrailsProcessException("Exception on starting process", e);
 		}
@@ -41,10 +41,6 @@ public abstract class GrailsProcess {
 	public void stop() {
 		logger.info("Killing command '%s'", getCommand());
 		process.destroy();
-	}
-
-	public File getProjectDirectory() {
-		return projectDirectory;
 	}
 
 	public void setProjectDirectory(File projectDirectory) {

@@ -39,21 +39,15 @@ public class GrailsProcessHolder {
 	}
 
 	public void setProjectDirectory(File projectDirectory) {
-		try {
-			this.projectDirectory = projectDirectory;
-			IoUtils.saveCurrentProject(Optional.ofNullable(projectDirectory));
-		} catch (IOException e) { }
+		this.projectDirectory = projectDirectory;
+		IoUtils.saveCurrentProject(Optional.ofNullable(projectDirectory));
 	}
 
 	public File getProjectDirectory() {
 		if (projectDirectory == null) {
-			try {
-				projectDirectory = IoUtils
-					.fetchPreviousProject()
-					.orElse(null);
-			} catch (IOException e) {
-				return null;
-			}
+			projectDirectory = IoUtils
+				.fetchPreviousProject()
+				.orElse(null);
 		}
 		return projectDirectory;
 	}
