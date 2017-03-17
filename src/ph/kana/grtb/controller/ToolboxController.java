@@ -310,21 +310,21 @@ public class ToolboxController {
 		Task bgTask = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
-				InputStream inputStream = grailsProcess.getInputStream();
-				StringBuilder consoleContent = new StringBuilder();
+			InputStream inputStream = grailsProcess.getInputStream();
+			StringBuilder consoleContent = new StringBuilder();
 
-				try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-					String line;
-					while ((line = reader.readLine()) != null) {
-						consoleContent
-							.append(line)
-							.append("\n");
-						updateMessage(consoleContent.toString());
-					}
-				} catch (IOException e) {
-					throw new GrailsProcessException("Error streaming grails process.", e);
+			try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+				String line;
+				while ((line = reader.readLine()) != null) {
+					consoleContent
+						.append(line)
+						.append("\n");
+					updateMessage(consoleContent.toString());
 				}
-				return null;
+			} catch (IOException e) {
+				throw new GrailsProcessException("Error streaming grails process.", e);
+			}
+			return null;
 			}
 		};
 
