@@ -237,7 +237,7 @@ public class ToolboxController {
 				exitApp();
 			});
 		} else {
-			streamToTextArea(grailsProcess, consoleTextArea);
+			streamToTextArea(grailsProcess);
 		}
 	}
 
@@ -273,7 +273,7 @@ public class ToolboxController {
 	}
 
 	private void startActiveProcessBehavior(GrailsProcess grailsProcess) {
-		streamToTextArea(grailsProcess, consoleTextArea);
+		streamToTextArea(grailsProcess);
 
 		commandStringTextField.setText(grailsProcess.getCommand());
 		processProgressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
@@ -291,7 +291,7 @@ public class ToolboxController {
 		alert.showAndWait();
 	}
 
-	private void streamToTextArea(GrailsProcess grailsProcess, TextArea textArea) {
+	private void streamToTextArea(GrailsProcess grailsProcess) {
 		Task bgTask = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
@@ -299,13 +299,12 @@ public class ToolboxController {
 				StringBuilder consoleContent = new StringBuilder();
 
 				try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-					String line = reader.readLine();
-					while (null != line) {
+					String line;
+					while ((line = reader.readLine()) != null) {
 						consoleContent
 							.append(line)
 							.append("\n");
 						updateMessage(consoleContent.toString());
-						line = reader.readLine();
 					}
 				} catch (IOException e) {
 					throw new GrailsProcessException("Error streaming grails process.", e);
@@ -313,13 +312,13 @@ public class ToolboxController {
 				return null;
 			}
 		};
-		textArea
+
+		consoleTextArea
 			.textProperty()
 			.bind(bgTask.messageProperty());
-		Thread thread = new Thread(bgTask, "process-streaming-bg-task");
-		thread.setDaemon(true);
-		thread.start();
-
+		bgTask
+			.messageProperty()
+			.addListener((observable, oldValue, newValue) -> scrollConsoleToEnd());
 		EventHandler<Event> endProcessEventHandler = event -> {
 			grailsService.endCurrentProcess();
 			startInactiveProcessBehavior();
@@ -328,6 +327,18 @@ public class ToolboxController {
 		bgTask.setOnSucceeded(endProcessEventHandler);
 		bgTask.setOnCancelled(endProcessEventHandler);
 		bgTask.setOnFailed(endProcessEventHandler);
+
+		Thread thread = new Thread(bgTask, "process-streaming-bg-task");
+		thread.setDaemon(true);
+		thread.start();
+	}
+
+	private void scrollConsoleToEnd() {
+		Optional
+			.of(consoleTextArea.getSelectedText())
+			.filter(String::isEmpty)
+			.map(text -> Double.MAX_VALUE)
+			.ifPresent(consoleTextArea::setScrollTop);
 	}
 
 	private void openLink(String url) {
