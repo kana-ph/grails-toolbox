@@ -28,7 +28,7 @@ public enum RunAppType {
 	public static RunAppType findByDescription(String description) {
 		return Arrays
 			.stream(values())
-			.filter(description::equals)
+			.filter(value -> description.equals(value.description))
 			.findFirst()
 			.orElse(null);
 	}
