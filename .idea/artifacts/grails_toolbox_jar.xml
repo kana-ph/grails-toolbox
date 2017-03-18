@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="grails-toolbox:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/grails_toolbox_jar</output-path>
+    <root id="archive" name="grails-toolbox.jar">
+      <element id="module-output" name="grails-toolbox" />
+    </root>
+  </artifact>
+</component>
