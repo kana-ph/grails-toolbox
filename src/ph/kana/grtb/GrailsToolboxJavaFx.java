@@ -14,6 +14,8 @@ public class GrailsToolboxJavaFx extends Application {
 	private static final double APP_WIDTH = 830.0;
 	private static final double APP_HEIGHT = 750.0;
 
+	public static final String APP_VERSION = "v2.1";
+
 	public static void main(String[] args) {
 		launch(args);
 	}

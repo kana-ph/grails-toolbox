@@ -275,6 +275,8 @@
           </Menu>
           <Menu text="Help">
             <items>
+                  <MenuItem fx:id="versionMenuItem" mnemonicParsing="false" onAction="#versionMenuItemClick" text="v2.0" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem mnemonicParsing="false" onAction="#aboutMenuItemClick" text="About">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="F1" control="UP" meta="UP" shift="UP" shortcut="UP" />

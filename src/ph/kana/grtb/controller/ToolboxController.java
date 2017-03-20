@@ -32,6 +32,8 @@ import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static ph.kana.grtb.GrailsToolboxJavaFx.APP_VERSION;
+
 public class ToolboxController {
 
 	private static final double DEFAULT_CONSOLE_LEFT_ANCHOR = 240.0;
@@ -59,10 +61,10 @@ public class ToolboxController {
 	@FXML private TextField testClassPatternTextField;
 	@FXML private ProgressBar processProgressBar;
 	@FXML private Accordion toolboxAccordion;
-	@FXML private AnchorPane rootAnchorPane;
 	@FXML private AnchorPane consoleAnchorPane;
 	@FXML private Menu fileMenu;
 	@FXML private Menu grailsMenu;
+	@FXML private MenuItem versionMenuItem;
 	@FXML private TilePane killAppPane;
 	@FXML private TilePane customCommandPane;
 	@FXML private TilePane aboutPane;
@@ -81,6 +83,8 @@ public class ToolboxController {
 		checkGrailsInstallation();
 		initializeRunAppTypeComboBox();
 		initializeToolboxAccordion();
+
+		versionMenuItem.setText(APP_VERSION);
 	}
 
 	@FXML
@@ -235,6 +239,11 @@ public class ToolboxController {
 		openLink("https://icons8.com/");
 	}
 
+	@FXML
+	public void versionMenuItemClick() {
+		openLink("https://github.com/kana0011/grails-toolbox/releases/tag/" + APP_VERSION);
+	}
+
 	private void checkGrailsInstallation() {
 		GrailsProcess grailsProcess = grailsService.checkInstallation();
 		if (null == grailsProcess) {
@@ -243,7 +252,10 @@ public class ToolboxController {
 				exitApp();
 			});
 		} else {
-			streamToTextArea(grailsProcess);
+			streamToTextArea(grailsProcess, () -> {
+				String message = String.format("Grails Toolbox version: %s\n", APP_VERSION);
+				consoleTextArea.appendText(message);
+			});
 		}
 	}
 
@@ -319,6 +331,10 @@ public class ToolboxController {
 	}
 
 	private void streamToTextArea(GrailsProcess grailsProcess) {
+		streamToTextArea(grailsProcess, () -> {});
+	}
+
+	private void streamToTextArea(GrailsProcess grailsProcess, Runnable postRunEvent) {
 		Task bgTask = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
@@ -346,9 +362,16 @@ public class ToolboxController {
 		bgTask
 			.messageProperty()
 			.addListener((observable, oldValue, newValue) -> scrollConsoleToEnd());
+
 		EventHandler<Event> endProcessEventHandler = event -> {
+			consoleTextArea
+				.textProperty()
+				.unbind();
+
 			grailsService.endCurrentProcess();
 			startInactiveProcessBehavior();
+			postRunEvent.run();
+
 			event.consume();
 		};
 		bgTask.setOnSucceeded(endProcessEventHandler);
